@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+
+@{ ViewBag.Title = "userdash";}
+
+<fieldset>
+   @if (@Session["nombre"] != null) 
+   {
+       <text> bienvenido @Session["nombre"].ToString()</text>
+   }   
+</fieldset>

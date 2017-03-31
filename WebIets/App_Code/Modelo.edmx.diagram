@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb1916332f0d4deeb4171010d6c8a879" Name="Diagram1">
+        <EntityTypeShape EntityType="GCModel.ANEXOS" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.DEPENDENCIA" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.LOGS_RADICACION" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.RADICACIONES" Width="2" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.TIPO_ACCESO" Width="2.375" PointX="0.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.TIPO_DOCUMENTOS" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.USUARIO_EXTERNO" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCModel.USUARIOS" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="GCModel.FK_RADICACIONES_ANEXOS" ManuallyRouted="false" />
+        <AssociationConnector Association="GCModel.FK_RADICACIONES_DEPENDENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="GCModel.FK_RADICACIONES_TIPO_DOCUMENTOS" ManuallyRouted="false" />
+        <AssociationConnector Association="GCModel.FK_RADICACIONES_USUARIO_EXTERNO" ManuallyRouted="false" />
+        <AssociationConnector Association="GCModel.FK_RADICACIONES_USUARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="GCModel.Perfil" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GCModel.VISTA_RADICACIONES" Width="1.5" PointX="8.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

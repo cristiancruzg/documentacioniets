@@ -1,0 +1,58 @@
+﻿@model prueba.Models.USUARIOS
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--<h2>Index</h2>-->
+
+@using (Html.BeginForm("Index", "home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>NUEVOS DATOS </legend>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 2px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table align="center">
+            <tr>
+                
+                <td >@Html.TextBoxFor(a => a.NOMBRE, new { @class = "form-control" })
+                </td>
+                <td>@Html.ValidationMessageFor(a => a.NOMBRE)</td>
+            </tr>
+            <tr>
+               
+                <td  >
+                    @Html.PasswordFor(a => a.PASS, new { @class = "form-control" }) 
+                    
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.PASS)
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Recordarme
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="login" class="btn btn-lg btn-primary " />
+                </td>
+                <td></td>
+            </tr>
+            
+        </table>
+    </fieldset>
+}
+}

@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ANEXOS">
+          <Key>
+            <PropertyRef Name="ID_ANEXO" />
+          </Key>
+          <Property Name="ID_ANEXO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_ANEXO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DEPENDENCIA">
+          <Key>
+            <PropertyRef Name="ID_DEPENDENCIA" />
+          </Key>
+          <Property Name="ID_DEPENDENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_DEPENDENCIA" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOGS_RADICACION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ASUNTO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="FOLIOS" Type="int" Nullable="false" />
+          <Property Name="EVENTO" Type="nvarchar" MaxLength="500" />
+          <Property Name="FECHA_LOG" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RADICACIONES">
+          <Key>
+            <PropertyRef Name="ID_RADICACION" />
+          </Key>
+          <Property Name="ID_RADICACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASUNTO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="FOLIOS" Type="int" />
+          <Property Name="CANTIDAD_ANEXOS" Type="int" />
+          <Property Name="ID_USUARIO_FK" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO_EXT_FK" Type="int" Nullable="false" />
+          <Property Name="ID_ANEXO_FK" Type="int" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_FK" Type="int" Nullable="false" />
+          <Property Name="ID_TIPO_DOC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TIPO_ACCESO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ACCESO" />
+          </Key>
+          <Property Name="ID_TIPO_ACCESO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_ACCESO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_DOC" />
+          </Key>
+          <Property Name="ID_TIPO_DOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_DOC" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'GC.dbo.TIPOSANEXO' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="TIPOSANEXO">
+          <Property Name="NINGUNO" Type="varchar" MaxLength="30" />
+        </EntityType>-->
+        <EntityType Name="USUARIO_EXTERNO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO_EXT" />
+          </Key>
+          <Property Name="ID_USUARIO_EXT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOCUMENTO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PERSONA_ENCARGADA" Type="nvarchar" MaxLength="50" />
+          <Property Name="CARGO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="ID_TIPO_ACCESO_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GC.dbo.VISTA_RADICACIONES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VISTA_RADICACIONES">
+          <Key>
+            <PropertyRef Name="FECHA_RADICACIÓN" />
+            <PropertyRef Name="ASUNTO" />
+            <PropertyRef Name="CANTIDAD_FOLIOS" />
+            <PropertyRef Name="FUNCIONARIO" />
+            <PropertyRef Name="NOMBRE_DEPENDENCIA" />
+            <PropertyRef Name="NOMBRE_ANEXO" />
+            <PropertyRef Name="NOMBRE_TIPO_DOC" />
+            <PropertyRef Name="DOCUMENTO" />
+            <PropertyRef Name="USUARIO_EXTERNO" />
+            <PropertyRef Name="DIRECCION" />
+            <PropertyRef Name="TELEFONO" />
+          </Key>
+          <Property Name="FECHA_RADICACIÓN" Type="date" Nullable="false" />
+          <Property Name="ASUNTO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CANTIDAD_FOLIOS" Type="int" Nullable="false" />
+          <Property Name="FUNCIONARIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NOMBRE_DEPENDENCIA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE_ANEXO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_DOC" Type="varchar(max)" Nullable="false" />
+          <Property Name="DOCUMENTO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_EXTERNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PERSONA_ENCARGADA" Type="nvarchar" MaxLength="50" />
+          <Property Name="CARGO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RADICACIONES_ANEXOS">
+          <End Role="ANEXOS" Type="Self.ANEXOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANEXOS">
+              <PropertyRef Name="ID_ANEXO" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_ANEXO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_DEPENDENCIA">
+          <End Role="DEPENDENCIA" Type="Self.DEPENDENCIA" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPENDENCIA">
+              <PropertyRef Name="ID_DEPENDENCIA" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_DEPENDENCIA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_TIPO_DOCUMENTOS">
+          <End Role="TIPO_DOCUMENTOS" Type="Self.TIPO_DOCUMENTOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTOS">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIO_EXTERNO">
+          <End Role="USUARIO_EXTERNO" Type="Self.USUARIO_EXTERNO" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_EXTERNO">
+              <PropertyRef Name="ID_USUARIO_EXT" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIO_EXT_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Perfil">
+          <End Role="TIPO_ACCESO" Type="Self.TIPO_ACCESO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ACCESO">
+              <PropertyRef Name="ID_TIPO_ACCESO" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_TIPO_ACCESO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spBuscarNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NOMBRE" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spRadicacionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRadicacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spRadicacionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="asunto" Type="nvarchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="folios" Type="int" Mode="In" />
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+          <Parameter Name="idUsuarioExt" Type="int" Mode="In" />
+          <Parameter Name="idAnexo" Type="int" Mode="In" />
+          <Parameter Name="idDependencia" Type="int" Mode="In" />
+          <Parameter Name="idTipoDoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spRadicacionList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spRadicacionUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRadicacion" Type="int" Mode="In" />
+          <Parameter Name="asunto" Type="nvarchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="folios" Type="int" Mode="In" />
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+          <Parameter Name="idUsuarioExt" Type="int" Mode="In" />
+          <Parameter Name="idAnexo" Type="int" Mode="In" />
+          <Parameter Name="idDependencia" Type="int" Mode="In" />
+          <Parameter Name="idTipoDoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUsuarioDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUsuarioInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="idTipoAccesoFk" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUsuarioList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spUsuarioSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUsuarioUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="idTipoAccesoFk" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="GCModelStoreContainer">
+          <EntitySet Name="ANEXOS" EntityType="Self.ANEXOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPENDENCIA" EntityType="Self.DEPENDENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGS_RADICACION" EntityType="Self.LOGS_RADICACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RADICACIONES" EntityType="Self.RADICACIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_ACCESO" EntityType="Self.TIPO_ACCESO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_DOCUMENTOS" EntityType="Self.TIPO_DOCUMENTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO_EXTERNO" EntityType="Self.USUARIO_EXTERNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VISTA_RADICACIONES" EntityType="Self.VISTA_RADICACIONES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VISTA_RADICACIONES].[FECHA_RADICACIÓN] AS [FECHA_RADICACIÓN], 
+    [VISTA_RADICACIONES].[ASUNTO] AS [ASUNTO], 
+    [VISTA_RADICACIONES].[CANTIDAD_FOLIOS] AS [CANTIDAD_FOLIOS], 
+    [VISTA_RADICACIONES].[FUNCIONARIO] AS [FUNCIONARIO], 
+    [VISTA_RADICACIONES].[NOMBRE_DEPENDENCIA] AS [NOMBRE_DEPENDENCIA], 
+    [VISTA_RADICACIONES].[NOMBRE_ANEXO] AS [NOMBRE_ANEXO], 
+    [VISTA_RADICACIONES].[NOMBRE_TIPO_DOC] AS [NOMBRE_TIPO_DOC], 
+    [VISTA_RADICACIONES].[DOCUMENTO] AS [DOCUMENTO], 
+    [VISTA_RADICACIONES].[USUARIO_EXTERNO] AS [USUARIO_EXTERNO], 
+    [VISTA_RADICACIONES].[PERSONA_ENCARGADA] AS [PERSONA_ENCARGADA], 
+    [VISTA_RADICACIONES].[CARGO] AS [CARGO], 
+    [VISTA_RADICACIONES].[DIRECCION] AS [DIRECCION], 
+    [VISTA_RADICACIONES].[TELEFONO] AS [TELEFONO]
+    FROM [dbo].[VISTA_RADICACIONES] AS [VISTA_RADICACIONES]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_RADICACIONES_ANEXOS" Association="Self.FK_RADICACIONES_ANEXOS">
+            <End Role="ANEXOS" EntitySet="ANEXOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_DEPENDENCIA" Association="Self.FK_RADICACIONES_DEPENDENCIA">
+            <End Role="DEPENDENCIA" EntitySet="DEPENDENCIA" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_TIPO_DOCUMENTOS" Association="Self.FK_RADICACIONES_TIPO_DOCUMENTOS">
+            <End Role="TIPO_DOCUMENTOS" EntitySet="TIPO_DOCUMENTOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIO_EXTERNO" Association="Self.FK_RADICACIONES_USUARIO_EXTERNO">
+            <End Role="USUARIO_EXTERNO" EntitySet="USUARIO_EXTERNO" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIOS" Association="Self.FK_RADICACIONES_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="Perfil" Association="Self.Perfil">
+            <End Role="TIPO_ACCESO" EntitySet="TIPO_ACCESO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ANEXOS">
+          <Key>
+            <PropertyRef Name="ID_ANEXO" />
+          </Key>
+          <Property Name="ID_ANEXO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_ANEXO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_ANEXOS" FromRole="ANEXOS" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="DEPENDENCIA">
+          <Key>
+            <PropertyRef Name="ID_DEPENDENCIA" />
+          </Key>
+          <Property Name="ID_DEPENDENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_DEPENDENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_DEPENDENCIA" FromRole="DEPENDENCIA" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="LOGS_RADICACION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ASUNTO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="FOLIOS" Type="Int32" Nullable="false" />
+          <Property Name="EVENTO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_LOG" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RADICACIONES">
+          <Key>
+            <PropertyRef Name="ID_RADICACION" />
+          </Key>
+          <Property Name="ID_RADICACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASUNTO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="FOLIOS" Type="Int32" />
+          <Property Name="ID_USUARIO_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO_EXT_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_ANEXO_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_TIPO_DOC" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ANEXOS" Relationship="Self.FK_RADICACIONES_ANEXOS" FromRole="RADICACIONES" ToRole="ANEXOS" />
+          <NavigationProperty Name="DEPENDENCIA" Relationship="Self.FK_RADICACIONES_DEPENDENCIA" FromRole="RADICACIONES" ToRole="DEPENDENCIA" />
+          <NavigationProperty Name="TIPO_DOCUMENTOS" Relationship="Self.FK_RADICACIONES_TIPO_DOCUMENTOS" FromRole="RADICACIONES" ToRole="TIPO_DOCUMENTOS" />
+          <NavigationProperty Name="USUARIO_EXTERNO" Relationship="Self.FK_RADICACIONES_USUARIO_EXTERNO" FromRole="RADICACIONES" ToRole="USUARIO_EXTERNO" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_RADICACIONES_USUARIOS" FromRole="RADICACIONES" ToRole="USUARIOS" />
+          <Property Name="CANTIDAD_ANEXOS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TIPO_ACCESO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ACCESO" />
+          </Key>
+          <Property Name="ID_TIPO_ACCESO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TIPO_ACCESO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.Perfil" FromRole="TIPO_ACCESO" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="TIPO_DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_DOC" />
+          </Key>
+          <Property Name="ID_TIPO_DOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TIPO_DOC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_TIPO_DOCUMENTOS" FromRole="TIPO_DOCUMENTOS" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="USUARIO_EXTERNO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO_EXT" />
+          </Key>
+          <Property Name="ID_USUARIO_EXT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PERSONA_ENCARGADA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CARGO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_USUARIO_EXTERNO" FromRole="USUARIO_EXTERNO" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="ID_TIPO_ACCESO_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_USUARIOS" FromRole="USUARIOS" ToRole="RADICACIONES" />
+          <NavigationProperty Name="TIPO_ACCESO" Relationship="Self.Perfil" FromRole="USUARIOS" ToRole="TIPO_ACCESO" />
+        </EntityType>
+        <Association Name="FK_RADICACIONES_ANEXOS">
+          <End Role="ANEXOS" Type="Self.ANEXOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANEXOS">
+              <PropertyRef Name="ID_ANEXO" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_ANEXO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_DEPENDENCIA">
+          <End Role="DEPENDENCIA" Type="Self.DEPENDENCIA" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPENDENCIA">
+              <PropertyRef Name="ID_DEPENDENCIA" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_DEPENDENCIA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_TIPO_DOCUMENTOS">
+          <End Role="TIPO_DOCUMENTOS" Type="Self.TIPO_DOCUMENTOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTOS">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIO_EXTERNO">
+          <End Role="USUARIO_EXTERNO" Type="Self.USUARIO_EXTERNO" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_EXTERNO">
+              <PropertyRef Name="ID_USUARIO_EXT" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIO_EXT_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Perfil">
+          <End Role="TIPO_ACCESO" Type="Self.TIPO_ACCESO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ACCESO">
+              <PropertyRef Name="ID_TIPO_ACCESO" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_TIPO_ACCESO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ANEXOS" EntityType="Self.ANEXOS" />
+          <EntitySet Name="DEPENDENCIA" EntityType="Self.DEPENDENCIA" />
+          <EntitySet Name="LOGS_RADICACION" EntityType="Self.LOGS_RADICACION" />
+          <EntitySet Name="RADICACIONES" EntityType="Self.RADICACIONES" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TIPO_ACCESO" EntityType="Self.TIPO_ACCESO" />
+          <EntitySet Name="TIPO_DOCUMENTOS" EntityType="Self.TIPO_DOCUMENTOS" />
+          <EntitySet Name="USUARIO_EXTERNO" EntityType="Self.USUARIO_EXTERNO" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <AssociationSet Name="FK_RADICACIONES_ANEXOS" Association="Self.FK_RADICACIONES_ANEXOS">
+            <End Role="ANEXOS" EntitySet="ANEXOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_DEPENDENCIA" Association="Self.FK_RADICACIONES_DEPENDENCIA">
+            <End Role="DEPENDENCIA" EntitySet="DEPENDENCIA" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_TIPO_DOCUMENTOS" Association="Self.FK_RADICACIONES_TIPO_DOCUMENTOS">
+            <End Role="TIPO_DOCUMENTOS" EntitySet="TIPO_DOCUMENTOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIO_EXTERNO" Association="Self.FK_RADICACIONES_USUARIO_EXTERNO">
+            <End Role="USUARIO_EXTERNO" EntitySet="USUARIO_EXTERNO" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIOS" Association="Self.FK_RADICACIONES_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="Perfil" Association="Self.Perfil">
+            <End Role="TIPO_ACCESO" EntitySet="TIPO_ACCESO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <EntitySet Name="VISTA_RADICACIONES" EntityType="GCModel.VISTA_RADICACIONES" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GCModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GCModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="spBuscarNombre" ReturnType="Collection(GCModel.spBuscarNombre_Result)">
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spRadicacionDelete">
+            <Parameter Name="idRadicacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spRadicacionInsert">
+            <Parameter Name="asunto" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="folios" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuarioExt" Mode="In" Type="Int32" />
+            <Parameter Name="idAnexo" Mode="In" Type="Int32" />
+            <Parameter Name="idDependencia" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoDoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spRadicacionList" ReturnType="Collection(GCModel.spRadicacionList_Result)" />
+          <FunctionImport Name="spRadicacionUpdate">
+            <Parameter Name="idRadicacion" Mode="In" Type="Int32" />
+            <Parameter Name="asunto" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="folios" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuarioExt" Mode="In" Type="Int32" />
+            <Parameter Name="idAnexo" Mode="In" Type="Int32" />
+            <Parameter Name="idDependencia" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoDoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUsuarioDelete">
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUsuarioInsert">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="idTipoAccesoFk" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUsuarioList" ReturnType="Collection(GCModel.spUsuarioList_Result)" />
+          <FunctionImport Name="spUsuarioSearch" ReturnType="Collection(GCModel.spUsuarioSearch_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUsuarioUpdate">
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="idTipoAccesoFk" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="VISTA_RADICACIONES">
+          <Key>
+            <PropertyRef Name="FECHA_RADICACIÓN" />
+            <PropertyRef Name="ASUNTO" />
+            <PropertyRef Name="CANTIDAD_FOLIOS" />
+            <PropertyRef Name="FUNCIONARIO" />
+            <PropertyRef Name="NOMBRE_DEPENDENCIA" />
+            <PropertyRef Name="NOMBRE_ANEXO" />
+            <PropertyRef Name="NOMBRE_TIPO_DOC" />
+            <PropertyRef Name="DOCUMENTO" />
+            <PropertyRef Name="USUARIO_EXTERNO" />
+            <PropertyRef Name="DIRECCION" />
+            <PropertyRef Name="TELEFONO" />
+          </Key>
+          <Property Name="FECHA_RADICACIÓN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ASUNTO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CANTIDAD_FOLIOS" Type="Int32" Nullable="false" />
+          <Property Name="FUNCIONARIO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NOMBRE_DEPENDENCIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_ANEXO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_TIPO_DOC" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DOCUMENTO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USUARIO_EXTERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONA_ENCARGADA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CARGO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spBuscarNombre_Result">
+          <Property Type="Int32" Name="ID_USUARIO_EXT" Nullable="false" />
+          <Property Type="String" Name="DOCUMENTO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PERSONA_ENCARGADA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CARGO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="spRadicacionList_Result">
+          <Property Type="Int32" Name="ID_RADICACION" Nullable="false" />
+          <Property Type="String" Name="ASUNTO" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="FECHA" Nullable="true" />
+          <Property Type="Int32" Name="FOLIOS" Nullable="true" />
+          <Property Type="Int32" Name="CANTIDAD_ANEXOS" Nullable="true" />
+          <Property Type="Int32" Name="ID_USUARIO_FK" Nullable="false" />
+          <Property Type="Int32" Name="ID_USUARIO_EXT_FK" Nullable="false" />
+          <Property Type="Int32" Name="ID_ANEXO_FK" Nullable="false" />
+          <Property Type="Int32" Name="ID_DEPENDENCIA_FK" Nullable="false" />
+          <Property Type="Int32" Name="ID_TIPO_DOC" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spUsuarioList_Result">
+          <Property Type="Int32" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+          <Property Type="Int32" Name="ID_TIPO_ACCESO_FK" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spUsuarioSearch_Result">
+          <Property Type="Int32" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+          <Property Type="Int32" Name="ID_TIPO_ACCESO_FK" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GCModelStoreContainer" CdmEntityContainer="Entidades">
+          <EntitySetMapping Name="ANEXOS">
+            <EntityTypeMapping TypeName="GCModel.ANEXOS">
+              <MappingFragment StoreEntitySet="ANEXOS">
+                <ScalarProperty Name="ID_ANEXO" ColumnName="ID_ANEXO" />
+                <ScalarProperty Name="NOMBRE_ANEXO" ColumnName="NOMBRE_ANEXO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPENDENCIA">
+            <EntityTypeMapping TypeName="GCModel.DEPENDENCIA">
+              <MappingFragment StoreEntitySet="DEPENDENCIA">
+                <ScalarProperty Name="ID_DEPENDENCIA" ColumnName="ID_DEPENDENCIA" />
+                <ScalarProperty Name="NOMBRE_DEPENDENCIA" ColumnName="NOMBRE_DEPENDENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGS_RADICACION">
+            <EntityTypeMapping TypeName="GCModel.LOGS_RADICACION">
+              <MappingFragment StoreEntitySet="LOGS_RADICACION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="EVENTO" ColumnName="EVENTO" />
+                <ScalarProperty Name="FECHA_LOG" ColumnName="FECHA_LOG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RADICACIONES">
+            <EntityTypeMapping TypeName="GCModel.RADICACIONES">
+              <MappingFragment StoreEntitySet="RADICACIONES">
+                <ScalarProperty Name="CANTIDAD_ANEXOS" ColumnName="CANTIDAD_ANEXOS" />
+                <ScalarProperty Name="ID_RADICACION" ColumnName="ID_RADICACION" />
+                <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="ID_USUARIO_FK" ColumnName="ID_USUARIO_FK" />
+                <ScalarProperty Name="ID_USUARIO_EXT_FK" ColumnName="ID_USUARIO_EXT_FK" />
+                <ScalarProperty Name="ID_ANEXO_FK" ColumnName="ID_ANEXO_FK" />
+                <ScalarProperty Name="ID_DEPENDENCIA_FK" ColumnName="ID_DEPENDENCIA_FK" />
+                <ScalarProperty Name="ID_TIPO_DOC" ColumnName="ID_TIPO_DOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GCModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_ACCESO">
+            <EntityTypeMapping TypeName="GCModel.TIPO_ACCESO">
+              <MappingFragment StoreEntitySet="TIPO_ACCESO">
+                <ScalarProperty Name="ID_TIPO_ACCESO" ColumnName="ID_TIPO_ACCESO" />
+                <ScalarProperty Name="NOMBRE_TIPO_ACCESO" ColumnName="NOMBRE_TIPO_ACCESO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_DOCUMENTOS">
+            <EntityTypeMapping TypeName="GCModel.TIPO_DOCUMENTOS">
+              <MappingFragment StoreEntitySet="TIPO_DOCUMENTOS">
+                <ScalarProperty Name="ID_TIPO_DOC" ColumnName="ID_TIPO_DOC" />
+                <ScalarProperty Name="NOMBRE_TIPO_DOC" ColumnName="NOMBRE_TIPO_DOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_EXTERNO">
+            <EntityTypeMapping TypeName="GCModel.USUARIO_EXTERNO">
+              <MappingFragment StoreEntitySet="USUARIO_EXTERNO">
+                <ScalarProperty Name="ID_USUARIO_EXT" ColumnName="ID_USUARIO_EXT" />
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PERSONA_ENCARGADA" ColumnName="PERSONA_ENCARGADA" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="GCModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_TIPO_ACCESO_FK" ColumnName="ID_TIPO_ACCESO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VISTA_RADICACIONES">
+            <EntityTypeMapping TypeName="GCModel.VISTA_RADICACIONES">
+              <MappingFragment StoreEntitySet="VISTA_RADICACIONES">
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="PERSONA_ENCARGADA" ColumnName="PERSONA_ENCARGADA" />
+                <ScalarProperty Name="USUARIO_EXTERNO" ColumnName="USUARIO_EXTERNO" />
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE_TIPO_DOC" ColumnName="NOMBRE_TIPO_DOC" />
+                <ScalarProperty Name="NOMBRE_ANEXO" ColumnName="NOMBRE_ANEXO" />
+                <ScalarProperty Name="NOMBRE_DEPENDENCIA" ColumnName="NOMBRE_DEPENDENCIA" />
+                <ScalarProperty Name="FUNCIONARIO" ColumnName="FUNCIONARIO" />
+                <ScalarProperty Name="CANTIDAD_FOLIOS" ColumnName="CANTIDAD_FOLIOS" />
+                <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+                <ScalarProperty Name="FECHA_RADICACIÓN" ColumnName="FECHA_RADICACIÓN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="GCModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="GCModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="GCModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="GCModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GCModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="GCModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GCModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="GCModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="GCModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="spBuscarNombre" FunctionName="GCModel.Store.spBuscarNombre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GCModel.spBuscarNombre_Result">
+                <ScalarProperty Name="ID_USUARIO_EXT" ColumnName="ID_USUARIO_EXT" />
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PERSONA_ENCARGADA" ColumnName="PERSONA_ENCARGADA" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spRadicacionDelete" FunctionName="GCModel.Store.spRadicacionDelete" />
+          <FunctionImportMapping FunctionImportName="spRadicacionInsert" FunctionName="GCModel.Store.spRadicacionInsert" />
+          <FunctionImportMapping FunctionImportName="spRadicacionList" FunctionName="GCModel.Store.spRadicacionList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GCModel.spRadicacionList_Result">
+                <ScalarProperty Name="ID_RADICACION" ColumnName="ID_RADICACION" />
+                <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="CANTIDAD_ANEXOS" ColumnName="CANTIDAD_ANEXOS" />
+                <ScalarProperty Name="ID_USUARIO_FK" ColumnName="ID_USUARIO_FK" />
+                <ScalarProperty Name="ID_USUARIO_EXT_FK" ColumnName="ID_USUARIO_EXT_FK" />
+                <ScalarProperty Name="ID_ANEXO_FK" ColumnName="ID_ANEXO_FK" />
+                <ScalarProperty Name="ID_DEPENDENCIA_FK" ColumnName="ID_DEPENDENCIA_FK" />
+                <ScalarProperty Name="ID_TIPO_DOC" ColumnName="ID_TIPO_DOC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spRadicacionUpdate" FunctionName="GCModel.Store.spRadicacionUpdate" />
+          <FunctionImportMapping FunctionImportName="spUsuarioDelete" FunctionName="GCModel.Store.spUsuarioDelete" />
+          <FunctionImportMapping FunctionImportName="spUsuarioInsert" FunctionName="GCModel.Store.spUsuarioInsert" />
+          <FunctionImportMapping FunctionImportName="spUsuarioList" FunctionName="GCModel.Store.spUsuarioList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GCModel.spUsuarioList_Result">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_TIPO_ACCESO_FK" ColumnName="ID_TIPO_ACCESO_FK" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUsuarioSearch" FunctionName="GCModel.Store.spUsuarioSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GCModel.spUsuarioSearch_Result">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_TIPO_ACCESO_FK" ColumnName="ID_TIPO_ACCESO_FK" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUsuarioUpdate" FunctionName="GCModel.Store.spUsuarioUpdate" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

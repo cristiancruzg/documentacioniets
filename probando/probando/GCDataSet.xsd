@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GCDataSet" targetNamespace="http://tempuri.org/GCDataSet.xsd" xmlns:mstns="http://tempuri.org/GCDataSet.xsd" xmlns="http://tempuri.org/GCDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="GCConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GCConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.GCConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VISTA_RADICACIONESTableAdapter" GeneratorDataComponentClassName="VISTA_RADICACIONESTableAdapter" Name="VISTA_RADICACIONES" UserDataComponentName="VISTA_RADICACIONESTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GCConnectionString (Web.config)" DbObjectName="GC.dbo.VISTA_RADICACIONES" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT FECHA_RADICACIÓN, ASUNTO, CANTIDAD_FOLIOS, FUNCIONARIO, NOMBRE_DEPENDENCIA, NOMBRE_ANEXO, NOMBRE_TIPO_DOC, DOCUMENTO, USUARIO_EXTERNO, PERSONA_ENCARGADA, CARGO, DIRECCION, TELEFONO FROM dbo.VISTA_RADICACIONES</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FECHA_RADICACIÓN" DataSetColumn="FECHA_RADICACIÓN" />
+              <Mapping SourceColumn="ASUNTO" DataSetColumn="ASUNTO" />
+              <Mapping SourceColumn="CANTIDAD_FOLIOS" DataSetColumn="CANTIDAD_FOLIOS" />
+              <Mapping SourceColumn="FUNCIONARIO" DataSetColumn="FUNCIONARIO" />
+              <Mapping SourceColumn="NOMBRE_DEPENDENCIA" DataSetColumn="NOMBRE_DEPENDENCIA" />
+              <Mapping SourceColumn="NOMBRE_ANEXO" DataSetColumn="NOMBRE_ANEXO" />
+              <Mapping SourceColumn="NOMBRE_TIPO_DOC" DataSetColumn="NOMBRE_TIPO_DOC" />
+              <Mapping SourceColumn="DOCUMENTO" DataSetColumn="DOCUMENTO" />
+              <Mapping SourceColumn="USUARIO_EXTERNO" DataSetColumn="USUARIO_EXTERNO" />
+              <Mapping SourceColumn="PERSONA_ENCARGADA" DataSetColumn="PERSONA_ENCARGADA" />
+              <Mapping SourceColumn="CARGO" DataSetColumn="CARGO" />
+              <Mapping SourceColumn="DIRECCION" DataSetColumn="DIRECCION" />
+              <Mapping SourceColumn="TELEFONO" DataSetColumn="TELEFONO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GCDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="GCDataSet" msprop:Generator_UserDSName="GCDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VISTA_RADICACIONES" msprop:Generator_TableClassName="VISTA_RADICACIONESDataTable" msprop:Generator_TableVarName="tableVISTA_RADICACIONES" msprop:Generator_TablePropName="VISTA_RADICACIONES" msprop:Generator_RowDeletingName="VISTA_RADICACIONESRowDeleting" msprop:Generator_RowChangingName="VISTA_RADICACIONESRowChanging" msprop:Generator_RowEvHandlerName="VISTA_RADICACIONESRowChangeEventHandler" msprop:Generator_RowDeletedName="VISTA_RADICACIONESRowDeleted" msprop:Generator_UserTableName="VISTA_RADICACIONES" msprop:Generator_RowChangedName="VISTA_RADICACIONESRowChanged" msprop:Generator_RowEvArgName="VISTA_RADICACIONESRowChangeEvent" msprop:Generator_RowClassName="VISTA_RADICACIONESRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FECHA_RADICACIÓN" msprop:Generator_ColumnVarNameInTable="columnFECHA_RADICACIÓN" msprop:Generator_ColumnPropNameInRow="FECHA_RADICACIÓN" msprop:Generator_ColumnPropNameInTable="FECHA_RADICACIÓNColumn" msprop:Generator_UserColumnName="FECHA_RADICACIÓN" type="xs:dateTime" />
+              <xs:element name="ASUNTO" msprop:Generator_ColumnVarNameInTable="columnASUNTO" msprop:Generator_ColumnPropNameInRow="ASUNTO" msprop:Generator_ColumnPropNameInTable="ASUNTOColumn" msprop:Generator_UserColumnName="ASUNTO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CANTIDAD_FOLIOS" msprop:Generator_ColumnVarNameInTable="columnCANTIDAD_FOLIOS" msprop:Generator_ColumnPropNameInRow="CANTIDAD_FOLIOS" msprop:Generator_ColumnPropNameInTable="CANTIDAD_FOLIOSColumn" msprop:Generator_UserColumnName="CANTIDAD_FOLIOS" type="xs:int" />
+              <xs:element name="FUNCIONARIO" msprop:Generator_ColumnVarNameInTable="columnFUNCIONARIO" msprop:Generator_ColumnPropNameInRow="FUNCIONARIO" msprop:Generator_ColumnPropNameInTable="FUNCIONARIOColumn" msprop:Generator_UserColumnName="FUNCIONARIO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE_DEPENDENCIA" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_DEPENDENCIA" msprop:Generator_ColumnPropNameInRow="NOMBRE_DEPENDENCIA" msprop:Generator_ColumnPropNameInTable="NOMBRE_DEPENDENCIAColumn" msprop:Generator_UserColumnName="NOMBRE_DEPENDENCIA">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE_ANEXO" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_ANEXO" msprop:Generator_ColumnPropNameInRow="NOMBRE_ANEXO" msprop:Generator_ColumnPropNameInTable="NOMBRE_ANEXOColumn" msprop:Generator_UserColumnName="NOMBRE_ANEXO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE_TIPO_DOC" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_TIPO_DOC" msprop:Generator_ColumnPropNameInRow="NOMBRE_TIPO_DOC" msprop:Generator_ColumnPropNameInTable="NOMBRE_TIPO_DOCColumn" msprop:Generator_UserColumnName="NOMBRE_TIPO_DOC">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DOCUMENTO" msprop:Generator_ColumnVarNameInTable="columnDOCUMENTO" msprop:Generator_ColumnPropNameInRow="DOCUMENTO" msprop:Generator_ColumnPropNameInTable="DOCUMENTOColumn" msprop:Generator_UserColumnName="DOCUMENTO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="USUARIO_EXTERNO" msprop:Generator_ColumnVarNameInTable="columnUSUARIO_EXTERNO" msprop:Generator_ColumnPropNameInRow="USUARIO_EXTERNO" msprop:Generator_ColumnPropNameInTable="USUARIO_EXTERNOColumn" msprop:Generator_UserColumnName="USUARIO_EXTERNO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PERSONA_ENCARGADA" msprop:Generator_ColumnVarNameInTable="columnPERSONA_ENCARGADA" msprop:Generator_ColumnPropNameInRow="PERSONA_ENCARGADA" msprop:Generator_ColumnPropNameInTable="PERSONA_ENCARGADAColumn" msprop:Generator_UserColumnName="PERSONA_ENCARGADA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CARGO" msprop:Generator_ColumnVarNameInTable="columnCARGO" msprop:Generator_ColumnPropNameInRow="CARGO" msprop:Generator_ColumnPropNameInTable="CARGOColumn" msprop:Generator_UserColumnName="CARGO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIRECCION" msprop:Generator_ColumnVarNameInTable="columnDIRECCION" msprop:Generator_ColumnPropNameInRow="DIRECCION" msprop:Generator_ColumnPropNameInTable="DIRECCIONColumn" msprop:Generator_UserColumnName="DIRECCION">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TELEFONO" msprop:Generator_ColumnVarNameInTable="columnTELEFONO" msprop:Generator_ColumnPropNameInRow="TELEFONO" msprop:Generator_ColumnPropNameInTable="TELEFONOColumn" msprop:Generator_UserColumnName="TELEFONO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
