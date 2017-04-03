@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gc1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ANEXOS">
+          <Key>
+            <PropertyRef Name="ID_ANEXO" />
+          </Key>
+          <Property Name="ID_ANEXO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_ANEXO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPENDENCIA">
+          <Key>
+            <PropertyRef Name="ID_DEPENDENCIA" />
+          </Key>
+          <Property Name="ID_DEPENDENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_DEPENDENCIA" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RADICACIONES">
+          <Key>
+            <PropertyRef Name="ID_RADICACION" />
+          </Key>
+          <Property Name="ID_RADICACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASUNTO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" />
+          <Property Name="FOLIOS" Type="int" />
+          <Property Name="CANTIDAD_ANEXOS" Type="int" />
+          <Property Name="ID_USUARIOS_FK" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO_EXT_FK" Type="int" Nullable="false" />
+          <Property Name="ID_ANEXO_FK" Type="int" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_FK" Type="int" Nullable="false" />
+          <Property Name="ID_TIPO_DOC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TIPO_ACCESO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ACCESO" />
+          </Key>
+          <Property Name="ID_TIPO_ACCESO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_ACCESO" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_DOC" />
+          </Key>
+          <Property Name="ID_TIPO_DOC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_DOC" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO_EXTERNO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO_EXT" />
+          </Key>
+          <Property Name="ID_USUARIO_EXT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOCUMENTO" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="PERSONA_ENCARGADA" Type="nchar" MaxLength="50" />
+          <Property Name="CARGO" Type="nchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIOS" />
+          </Key>
+          <Property Name="ID_USUARIOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="ID_TIPO_ACCESO_FK" Type="int" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RADICACIONES_ANEXOS">
+          <End Role="ANEXOS" Type="Self.ANEXOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANEXOS">
+              <PropertyRef Name="ID_ANEXO" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_ANEXO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_DEPENDENCIA">
+          <End Role="DEPENDENCIA" Type="Self.DEPENDENCIA" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPENDENCIA">
+              <PropertyRef Name="ID_DEPENDENCIA" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_DEPENDENCIA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_TIPO_DOCUMENTOS">
+          <End Role="TIPO_DOCUMENTOS" Type="Self.TIPO_DOCUMENTOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTOS">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIO_EXTERNO">
+          <End Role="USUARIO_EXTERNO" Type="Self.USUARIO_EXTERNO" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_EXTERNO">
+              <PropertyRef Name="ID_USUARIO_EXT" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIO_EXT_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIOS" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIOS_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_DEPENDENCIA">
+          <End Role="DEPENDENCIA" Type="Self.DEPENDENCIA" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPENDENCIA">
+              <PropertyRef Name="ID_DEPENDENCIA" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_DEPENDENCIA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_TIPO_ACCESO">
+          <End Role="TIPO_ACCESO" Type="Self.TIPO_ACCESO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ACCESO">
+              <PropertyRef Name="ID_TIPO_ACCESO" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_TIPO_ACCESO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gc1ModelStoreContainer">
+          <EntitySet Name="ANEXOS" EntityType="Self.ANEXOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPENDENCIA" EntityType="Self.DEPENDENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RADICACIONES" EntityType="Self.RADICACIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_ACCESO" EntityType="Self.TIPO_ACCESO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_DOCUMENTOS" EntityType="Self.TIPO_DOCUMENTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO_EXTERNO" EntityType="Self.USUARIO_EXTERNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_RADICACIONES_ANEXOS" Association="Self.FK_RADICACIONES_ANEXOS">
+            <End Role="ANEXOS" EntitySet="ANEXOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_DEPENDENCIA" Association="Self.FK_RADICACIONES_DEPENDENCIA">
+            <End Role="DEPENDENCIA" EntitySet="DEPENDENCIA" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_TIPO_DOCUMENTOS" Association="Self.FK_RADICACIONES_TIPO_DOCUMENTOS">
+            <End Role="TIPO_DOCUMENTOS" EntitySet="TIPO_DOCUMENTOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIO_EXTERNO" Association="Self.FK_RADICACIONES_USUARIO_EXTERNO">
+            <End Role="USUARIO_EXTERNO" EntitySet="USUARIO_EXTERNO" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIOS" Association="Self.FK_RADICACIONES_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_DEPENDENCIA" Association="Self.FK_USUARIOS_DEPENDENCIA">
+            <End Role="DEPENDENCIA" EntitySet="DEPENDENCIA" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_TIPO_ACCESO" Association="Self.FK_USUARIOS_TIPO_ACCESO">
+            <End Role="TIPO_ACCESO" EntitySet="TIPO_ACCESO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gc1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ANEXOS">
+          <Key>
+            <PropertyRef Name="ID_ANEXO" />
+          </Key>
+          <Property Name="ID_ANEXO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_ANEXO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_ANEXOS" FromRole="ANEXOS" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="DEPENDENCIA">
+          <Key>
+            <PropertyRef Name="ID_DEPENDENCIA" />
+          </Key>
+          <Property Name="ID_DEPENDENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_DEPENDENCIA" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_DEPENDENCIA" FromRole="DEPENDENCIA" ToRole="RADICACIONES" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_DEPENDENCIA" FromRole="DEPENDENCIA" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="RADICACIONES">
+          <Key>
+            <PropertyRef Name="ID_RADICACION" />
+          </Key>
+          <Property Name="ID_RADICACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASUNTO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="3" />
+          <Property Name="FOLIOS" Type="Int32" />
+          <Property Name="CANTIDAD_ANEXOS" Type="Int32" />
+          <Property Name="ID_USUARIOS_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO_EXT_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_ANEXO_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_TIPO_DOC" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ANEXOS" Relationship="Self.FK_RADICACIONES_ANEXOS" FromRole="RADICACIONES" ToRole="ANEXOS" />
+          <NavigationProperty Name="DEPENDENCIA" Relationship="Self.FK_RADICACIONES_DEPENDENCIA" FromRole="RADICACIONES" ToRole="DEPENDENCIA" />
+          <NavigationProperty Name="TIPO_DOCUMENTOS" Relationship="Self.FK_RADICACIONES_TIPO_DOCUMENTOS" FromRole="RADICACIONES" ToRole="TIPO_DOCUMENTOS" />
+          <NavigationProperty Name="USUARIO_EXTERNO" Relationship="Self.FK_RADICACIONES_USUARIO_EXTERNO" FromRole="RADICACIONES" ToRole="USUARIO_EXTERNO" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_RADICACIONES_USUARIOS" FromRole="RADICACIONES" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TIPO_ACCESO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ACCESO" />
+          </Key>
+          <Property Name="ID_TIPO_ACCESO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TIPO_ACCESO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_TIPO_ACCESO" FromRole="TIPO_ACCESO" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="TIPO_DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_DOC" />
+          </Key>
+          <Property Name="ID_TIPO_DOC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TIPO_DOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_TIPO_DOCUMENTOS" FromRole="TIPO_DOCUMENTOS" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="USUARIO_EXTERNO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO_EXT" />
+          </Key>
+          <Property Name="ID_USUARIO_EXT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOCUMENTO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PERSONA_ENCARGADA" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CARGO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_USUARIO_EXTERNO" FromRole="USUARIO_EXTERNO" ToRole="RADICACIONES" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIOS" />
+          </Key>
+          <Property Name="ID_USUARIOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="ID_TIPO_ACCESO_FK" Type="Int32" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DEPENDENCIA" Relationship="Self.FK_USUARIOS_DEPENDENCIA" FromRole="USUARIOS" ToRole="DEPENDENCIA" />
+          <NavigationProperty Name="RADICACIONES" Relationship="Self.FK_RADICACIONES_USUARIOS" FromRole="USUARIOS" ToRole="RADICACIONES" />
+          <NavigationProperty Name="TIPO_ACCESO" Relationship="Self.FK_USUARIOS_TIPO_ACCESO" FromRole="USUARIOS" ToRole="TIPO_ACCESO" />
+        </EntityType>
+        <Association Name="FK_RADICACIONES_ANEXOS">
+          <End Role="ANEXOS" Type="Self.ANEXOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANEXOS">
+              <PropertyRef Name="ID_ANEXO" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_ANEXO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_DEPENDENCIA">
+          <End Role="DEPENDENCIA" Type="Self.DEPENDENCIA" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPENDENCIA">
+              <PropertyRef Name="ID_DEPENDENCIA" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_DEPENDENCIA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_DEPENDENCIA">
+          <End Role="DEPENDENCIA" Type="Self.DEPENDENCIA" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPENDENCIA">
+              <PropertyRef Name="ID_DEPENDENCIA" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_DEPENDENCIA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_TIPO_DOCUMENTOS">
+          <End Role="TIPO_DOCUMENTOS" Type="Self.TIPO_DOCUMENTOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTOS">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIO_EXTERNO">
+          <End Role="USUARIO_EXTERNO" Type="Self.USUARIO_EXTERNO" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_EXTERNO">
+              <PropertyRef Name="ID_USUARIO_EXT" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIO_EXT_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RADICACIONES_USUARIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="RADICACIONES" Type="Self.RADICACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIOS" />
+            </Principal>
+            <Dependent Role="RADICACIONES">
+              <PropertyRef Name="ID_USUARIOS_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_TIPO_ACCESO">
+          <End Role="TIPO_ACCESO" Type="Self.TIPO_ACCESO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ACCESO">
+              <PropertyRef Name="ID_TIPO_ACCESO" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_TIPO_ACCESO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntidadesBD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ANEXOS" EntityType="Self.ANEXOS" />
+          <EntitySet Name="DEPENDENCIA" EntityType="Self.DEPENDENCIA" />
+          <EntitySet Name="RADICACIONES" EntityType="Self.RADICACIONES" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TIPO_ACCESO" EntityType="Self.TIPO_ACCESO" />
+          <EntitySet Name="TIPO_DOCUMENTOS" EntityType="Self.TIPO_DOCUMENTOS" />
+          <EntitySet Name="USUARIO_EXTERNO" EntityType="Self.USUARIO_EXTERNO" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <AssociationSet Name="FK_RADICACIONES_ANEXOS" Association="Self.FK_RADICACIONES_ANEXOS">
+            <End Role="ANEXOS" EntitySet="ANEXOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_DEPENDENCIA" Association="Self.FK_RADICACIONES_DEPENDENCIA">
+            <End Role="DEPENDENCIA" EntitySet="DEPENDENCIA" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_DEPENDENCIA" Association="Self.FK_USUARIOS_DEPENDENCIA">
+            <End Role="DEPENDENCIA" EntitySet="DEPENDENCIA" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_TIPO_DOCUMENTOS" Association="Self.FK_RADICACIONES_TIPO_DOCUMENTOS">
+            <End Role="TIPO_DOCUMENTOS" EntitySet="TIPO_DOCUMENTOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIO_EXTERNO" Association="Self.FK_RADICACIONES_USUARIO_EXTERNO">
+            <End Role="USUARIO_EXTERNO" EntitySet="USUARIO_EXTERNO" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RADICACIONES_USUARIOS" Association="Self.FK_RADICACIONES_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="RADICACIONES" EntitySet="RADICACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_TIPO_ACCESO" Association="Self.FK_USUARIOS_TIPO_ACCESO">
+            <End Role="TIPO_ACCESO" EntitySet="TIPO_ACCESO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gc1ModelStoreContainer" CdmEntityContainer="EntidadesBD">
+          <EntitySetMapping Name="ANEXOS">
+            <EntityTypeMapping TypeName="gc1Model.ANEXOS">
+              <MappingFragment StoreEntitySet="ANEXOS">
+                <ScalarProperty Name="ID_ANEXO" ColumnName="ID_ANEXO" />
+                <ScalarProperty Name="NOMBRE_ANEXO" ColumnName="NOMBRE_ANEXO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPENDENCIA">
+            <EntityTypeMapping TypeName="gc1Model.DEPENDENCIA">
+              <MappingFragment StoreEntitySet="DEPENDENCIA">
+                <ScalarProperty Name="ID_DEPENDENCIA" ColumnName="ID_DEPENDENCIA" />
+                <ScalarProperty Name="NOMBRE_DEPENDENCIA" ColumnName="NOMBRE_DEPENDENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RADICACIONES">
+            <EntityTypeMapping TypeName="gc1Model.RADICACIONES">
+              <MappingFragment StoreEntitySet="RADICACIONES">
+                <ScalarProperty Name="ID_RADICACION" ColumnName="ID_RADICACION" />
+                <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="CANTIDAD_ANEXOS" ColumnName="CANTIDAD_ANEXOS" />
+                <ScalarProperty Name="ID_USUARIOS_FK" ColumnName="ID_USUARIOS_FK" />
+                <ScalarProperty Name="ID_USUARIO_EXT_FK" ColumnName="ID_USUARIO_EXT_FK" />
+                <ScalarProperty Name="ID_ANEXO_FK" ColumnName="ID_ANEXO_FK" />
+                <ScalarProperty Name="ID_DEPENDENCIA_FK" ColumnName="ID_DEPENDENCIA_FK" />
+                <ScalarProperty Name="ID_TIPO_DOC" ColumnName="ID_TIPO_DOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="gc1Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_ACCESO">
+            <EntityTypeMapping TypeName="gc1Model.TIPO_ACCESO">
+              <MappingFragment StoreEntitySet="TIPO_ACCESO">
+                <ScalarProperty Name="ID_TIPO_ACCESO" ColumnName="ID_TIPO_ACCESO" />
+                <ScalarProperty Name="NOMBRE_TIPO_ACCESO" ColumnName="NOMBRE_TIPO_ACCESO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_DOCUMENTOS">
+            <EntityTypeMapping TypeName="gc1Model.TIPO_DOCUMENTOS">
+              <MappingFragment StoreEntitySet="TIPO_DOCUMENTOS">
+                <ScalarProperty Name="ID_TIPO_DOC" ColumnName="ID_TIPO_DOC" />
+                <ScalarProperty Name="NOMBRE_TIPO_DOC" ColumnName="NOMBRE_TIPO_DOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_EXTERNO">
+            <EntityTypeMapping TypeName="gc1Model.USUARIO_EXTERNO">
+              <MappingFragment StoreEntitySet="USUARIO_EXTERNO">
+                <ScalarProperty Name="ID_USUARIO_EXT" ColumnName="ID_USUARIO_EXT" />
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PERSONA_ENCARGADA" ColumnName="PERSONA_ENCARGADA" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="gc1Model.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="ID_USUARIOS" ColumnName="ID_USUARIOS" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_TIPO_ACCESO_FK" ColumnName="ID_TIPO_ACCESO_FK" />
+                <ScalarProperty Name="ID_DEPENDENCIA_FK" ColumnName="ID_DEPENDENCIA_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

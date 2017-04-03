@@ -74,6 +74,7 @@ namespace busqueda
                 SqlDataAdapter adt = new SqlDataAdapter(cmd);
                 adt.Fill(dt);
                 data.DataSource = dt;
+                
                 data.DataBind();
 
 

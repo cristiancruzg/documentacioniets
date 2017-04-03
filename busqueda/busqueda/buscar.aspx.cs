@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Text;
+
+using System.Web.ClientServices;
 namespace busqueda
 {
     public partial class buscar : System.Web.UI.Page
@@ -16,12 +19,7 @@ namespace busqueda
            
         }
 
-        public void llenargrilla()
-        {
-            df.llenar_grila(gdbusqueda);
-             
-
-        }
+        
 
         
 
@@ -40,7 +38,11 @@ namespace busqueda
 
         protected void Unnamed1_TextChanged(object sender, EventArgs e)
         {
-            df.filtrar_grilla(gdbusqueda,this.txtnumero.Text.Trim());    
+            df.filtrar_grilla(gdbusqueda,this.txtnumero.Text.Trim());
+            if (gdbusqueda.Rows[0] == null)
+            {
+                Response.Write("<script>alert('no hay registros con estos parametros');</script>");
+            }    
         }
 
         protected void txtentrada_TextChanged(object sender, EventArgs e)
