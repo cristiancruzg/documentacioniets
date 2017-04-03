@@ -9,7 +9,7 @@ using System.Web;
 public class clTipoDocumento
 {
     //Clase entidades ORM BD
-    private Entidades contexto = new Entidades();
+    private EntidadesBD contexto = new EntidadesBD();
     public clTipoDocumento(){}
 
     //Metodo Agregar TIPO DE DOCUMENTO

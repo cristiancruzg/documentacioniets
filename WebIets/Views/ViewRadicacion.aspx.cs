@@ -101,7 +101,7 @@ public partial class Views_ViewRadicacion : System.Web.UI.Page
             ra.FOLIOS = int.Parse(txtFolios.Text.ToUpper());
             ra.CANTIDAD_ANEXOS = int.Parse(txtCantAnexos.Text.ToUpper());
             //Asociación entre las llaves primarias y foraneas de la tabla radicaciones
-            ra.ID_USUARIO_FK = us.ID_USUARIO;
+            ra.ID_USUARIOS_FK = us.ID_USUARIOS;
             ra.ID_USUARIO_EXT_FK = usEx.ID_USUARIO_EXT;
             ra.ID_DEPENDENCIA_FK = de.ID_DEPENDENCIA;
             ra.ID_TIPO_DOC = tp.ID_TIPO_DOC;

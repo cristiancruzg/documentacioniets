@@ -9,7 +9,7 @@ using System.Web;
 public class clTipoAcceso
 {
     //Clase entidades ORM BD
-    private Entidades contexto = new Entidades();
+    private EntidadesBD contexto = new EntidadesBD();
     public clTipoAcceso(){}
 
     //Metodo buscar TIPO ACCESO      

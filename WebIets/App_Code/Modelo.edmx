@@ -380,7 +380,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EntidadesBD" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ANEXOS" EntityType="Self.ANEXOS" />
           <EntitySet Name="DEPENDENCIA" EntityType="Self.DEPENDENCIA" />
           <EntitySet Name="RADICACIONES" EntityType="Self.RADICACIONES" />
@@ -423,7 +423,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="gc1ModelStoreContainer" CdmEntityContainer="Entidades">
+        <EntityContainerMapping StorageEntityContainer="gc1ModelStoreContainer" CdmEntityContainer="EntidadesBD">
           <EntitySetMapping Name="ANEXOS">
             <EntityTypeMapping TypeName="gc1Model.ANEXOS">
               <MappingFragment StoreEntitySet="ANEXOS">

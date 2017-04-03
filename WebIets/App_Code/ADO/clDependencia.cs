@@ -10,7 +10,7 @@ using System.Web;
 public class clDependencia
 {
     //Clase entidades ORM BD
-    private Entidades contexto = new Entidades ();
+    private EntidadesBD contexto = new EntidadesBD();
     public clDependencia(){ } 
     //Metodo Agregar DEPENDENCIA
     public int agregarDependencia(DEPENDENCIA nuevo)

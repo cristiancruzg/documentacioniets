@@ -69,7 +69,7 @@
                             OnRowEditing="RowEditingEvent"
                             OnRowUpdating="RowUpdatingEvent"
                             AutoGenerateColumns="False"
-                            DataKeyNames="ID_USUARIO"
+                            DataKeyNames="ID_USUARIOS"
                             Font-Size="Small"
                             OnRowDataBound="RowDataboundEvent" AllowPaging="True" 
                             OnPageIndexChanging="gvUsuarios_PageIndexChanging" CellPadding="4" ForeColor="#333333" GridLines="None">
@@ -77,10 +77,10 @@
                             <Columns>
                                 <asp:TemplateField HeaderText="Código" HeaderStyle-CssClass="text-center">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl1" runat="server" Text='<% # Bind("ID_USUARIO") %>'></asp:Label>
+                                        <asp:Label ID="lbl1" runat="server" Text='<% # Bind("ID_USUARIOS") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Label ID="lbl2" runat="server" Text='<% # Bind("ID_USUARIO") %>'></asp:Label>
+                                        <asp:Label ID="lbl2" runat="server" Text='<% # Bind("ID_USUARIOS") %>'></asp:Label>
                                     </EditItemTemplate>
 
 <HeaderStyle CssClass="text-center"></HeaderStyle>

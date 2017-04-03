@@ -9,7 +9,7 @@ using System.Web;
 public class clUsuario
 {
     //Clase entidades ORM BD
-    private Entidades contexto = new Entidades();
+    private EntidadesBD contexto = new EntidadesBD();
     public clUsuario() { }
 
     //Metodo Agregar USUARIOS
