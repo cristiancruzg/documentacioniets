@@ -13,10 +13,10 @@ namespace ADO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EntidadesBD : DbContext
+    public partial class Entidades : DbContext
     {
-        public EntidadesBD()
-            : base("name=EntidadesBD")
+        public Entidades()
+            : base("name=Entidades")
         {
         }
     

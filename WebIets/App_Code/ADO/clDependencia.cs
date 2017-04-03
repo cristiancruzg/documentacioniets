@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 /// <summary>
 /// Área del instituto
 /// </summary>
 public class clDependencia
 {
     //Clase entidades ORM BD
-    private EntidadesBD contexto = new EntidadesBD ();
+    private Entidades contexto = new Entidades ();
     public clDependencia(){ } 
     //Metodo Agregar DEPENDENCIA
     public int agregarDependencia(DEPENDENCIA nuevo)

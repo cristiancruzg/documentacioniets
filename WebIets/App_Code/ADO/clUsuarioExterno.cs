@@ -10,7 +10,7 @@ using System.Web;
 public class clUsuarioExterno
 {
     //Clase entidades ORM BD
-    private EntidadesBD contexto = new EntidadesBD();
+    private Entidades contexto = new Entidades();
     public clUsuarioExterno() { }
     //Metodo Agregar USUARIO_EXTERNO
     public int agregarUsuExt(USUARIO_EXTERNO nuevo)

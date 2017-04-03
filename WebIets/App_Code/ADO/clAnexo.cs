@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ using System.Web;
 public class clAnexo
 {
     //Clase entidades ORM BD
-    private GC contexto = new EntidadesBD();
+    private Entidades contexto = new Entidades();
     
     public clAnexo(){}
     //Metodo Agregar ANEXO
@@ -68,4 +69,8 @@ public class clAnexo
             throw;
         }
     }
+}
+
+public class Entidades
+{
 }
