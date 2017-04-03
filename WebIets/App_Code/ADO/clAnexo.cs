@@ -9,7 +9,7 @@ using System.Web;
 public class clAnexo
 {
     //Clase entidades ORM BD
-    private EntidadesBD contexto = new EntidadesBD();
+    private GC contexto = new EntidadesBD();
     
     public clAnexo(){}
     //Metodo Agregar ANEXO

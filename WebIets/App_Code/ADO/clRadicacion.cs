@@ -9,7 +9,7 @@ using System.Web;
 public class clRadicacion
 {
     //Clase entidades ORM BD
-    private   contexto = new EntidadesBD();
+    private EntidadesBD   contexto = new EntidadesBD();
     public clRadicacion() { }
     //Metodo Agregar RADICACION
     public int crearRadicacion(RADICACIONES nuevaRadicacion)
