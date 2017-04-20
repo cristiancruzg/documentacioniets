@@ -50,6 +50,48 @@ ul{
 #menu>li:hover>ul {
   display:block;
 }
+/*codigo ventana modal*/
+#popup {
+   visibility: hidden;
+   opacity: 0;
+   margin-top: -300px;
+}
+ 
+#popup:target {
+   visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+.popup-contenedor {
+   position: relative;
+   margin:7% auto;
+   padding:30px 50px;
+   background-color: #fafafa;
+   color:#333;
+   border-radius: 3px;
+   width:50%;
+}
+a.popup-cerrar {
+   position: absolute;
+   top:3px;
+   right:3px;
+   background-color: #333;
+   padding:7px 10px;
+   font-size: 20px;
+   text-decoration: none;
+   line-height: 1;
+   color:#fff;
+}
     </style>
 </head>
 <body>
@@ -76,11 +118,21 @@ ul{
                             </ul>
           </li>
                         
-          <li><a href="">Asunto</a></li>
+          <li><a href="#popup" class="popop-link">Asunto</a></li>
           <li><a href="">Enviado a</a></li>
           <li><a href="">Dirigido  a</a></li>
         </ul>
+                    
                 </nav>
+                <%--creando ventana modal--%>
+                <div class="modal modal-body" id="popup">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Asuntos </h2>
+                        <p>en este punt podra buscar por palabras relacionadas en el asunto del radicado</p>
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div>
             </div>
 
               <div class="contenido">
@@ -108,5 +160,6 @@ ul{
         </div>
       
     </form>
+    
 </body>
 </html>
