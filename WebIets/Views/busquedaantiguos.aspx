@@ -70,12 +70,125 @@ ul{
    opacity: 0;
    margin-top: -300px;
 }
+
+#Tipo_docsalida{
+     visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+
+}
+#Tipo_docsalida:target{
+    visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+
+}
+#enviado_salida{
+
+    visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
+#enviado_salida:target{
+
+     visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+#Asuntosalida{
+
+     visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
+#Asuntosalida:target{
+
+    visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+#radicadosalida { 
+   visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
+#radicadosalida:target {
+   visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+#fechasalida
+{ 
+   visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
+#fechasalida:target{
+    visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+
 #Asunto { 
    visibility: hidden;
    opacity: 0;                      /*id de la etiqueta*/
    margin-top: -300px;
 }
-
+#Tipo_doc { 
+   visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
 #fecha { 
    visibility: hidden;
    opacity: 0;                      /*id de la etiqueta*/
@@ -98,6 +211,22 @@ ul{
 }
  /*evento de label etiqueta*/
 #Asunto:target {
+   visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+
+#Tipo_doc:target {
    visibility:visible;
    opacity: 1;
    background-color: rgba(0,0,0,0.8);
@@ -221,12 +350,12 @@ a.popup-cerrar {
                      <ul id="menu">
                          <li><a href="">RADICADO SALIDA</a>
                              <ul>
-                                  <li><a href="#radicado">N° Radicado</a></li>
-                                  <li><a href="#fecha" class="popup-link">Fecha</a> </li>                           
-                                  <li><a href="#Asunto" class="popup-link">Asunto</a></li>
-                                  <li><a href="#enviado_a">Enviado a</a></li>
-                                    <li><a href="#dirigido_a">Dirigido  a</a></li>
-
+                                  <li><a href="#radicadosalida">N° Radicado</a></li>
+                                  <li><a href="#fechasalida" class="popup-link">Fecha</a> </li>                           
+                                  <li><a href="#Asuntosalida" class="popup-link">Asunto</a></li>
+                                  <li><a href="#enviado_salida">Firmado por</a></li>
+                                    <li><a href="#Tipo_docsalida">Tipo de Documento </a></li>
+                                 
                              </ul>
                              </li>
                           <li><a href="">RADICADO ENTRADA</a>
@@ -234,8 +363,9 @@ a.popup-cerrar {
                                   <li><a href="#radicado">N° Radicado</a></li>
                              <li><a href="#fecha" class="popup-link">Fecha</a> </li>                           
                             <li><a href="#Asunto" class="popup-link">Asunto</a></li>
-                            <li><a href="#enviado_a">Enviado a</a></li>
-                           <li><a href="#dirigido_a">Dirigido  a</a></li>
+                            <li><a href="#enviado_a">Enviado por</a></li>
+                           <li><a href="#dirigido_a">Dirigido A</a></li>
+                                 <li><a href="#tipo_doc">Tipo de Documento </a></li>
 
                              </ul>
                              </li>
@@ -260,11 +390,7 @@ a.popup-cerrar {
          </ul>
               
                 </nav>
-             <div id="contenido">
-                 <div id="principal">
-                     </div>
-
-                </div>
+          
                    
            <%--creando ventanas modales para buscar x cada campo--%> 
                 <div > 
@@ -278,12 +404,23 @@ a.popup-cerrar {
 
                     </div>
                     </div>
+                     
+                    <div class="modal-wrapper" id="Tipo_doc">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Tipo de documento </h2>
+                        <p>en este punto podra buscar por palabras relacionadas con el documento </p>
+                        <asp:TextBox ID="txtti_doc" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:Button ID="btntipodoc" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div>
                 <div class="modal-wrapper" id="enviado_a">
                     <div class="popup-contenedor">
                         <h2>buscar por " a quien se envio" </h2>
                         <p>en este punto podra buscar por palabras relacionadas a las entidades o personas que se envio</p>
                         <asp:TextBox ID="txtenviado" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="btnenviado" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="btnenviado" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -315,11 +452,68 @@ a.popup-cerrar {
                         <p>en este punto podra buscar por el consecutivo relacionado en el Radicado</p>
                       <asp:TextBox ID="txtradicado" runat="server" CssClass="form-control"></asp:TextBox>
                     
-                        <asp:Button ID="Btnradicado" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="Btnradicado" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
                     </div> 
+                    <div class="modal-wrapper" id="radicadosalida">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Numero De Radicado </h2>
+                        <p>en este punto podra buscar por el consecutivo relacionado en el Radicado</p>
+                      <asp:TextBox ID="txtradsalida" runat="server" CssClass="form-control"></asp:TextBox>
+                    
+                        <asp:Button ID="btnradsalida" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div> 
+                    <div class="modal-wrapper" id="Tipo_docsalida">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Tipo  De Documento </h2>
+                        <p>en este punto podra buscar por el tipo de documento relacionado en el Radicado</p>
+                      <asp:TextBox ID="txtipsalida" runat="server" CssClass="form-control"></asp:TextBox>
+                    
+                        <asp:Button ID="btntipsalida" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div> 
+                    <div class="modal-wrapper" id="Asuntosalida">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Asunto De Radicado </h2>
+                        <p>en este punto podra buscar por el Asunto relacionado en el Radicado</p>
+                      <asp:TextBox ID="txtasuntosalida" runat="server" CssClass="form-control"></asp:TextBox>
+                    
+                        <asp:Button ID="btnasuntosalida" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btnasuntosalida_Click" />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div> 
+                     <div class="modal-wrapper" id="fechasalida">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Fecha de salida De Radicado </h2>
+                        <p>en este punto podra buscar por la fecha del  Radicado</p>
+                       desde:  <asp:TextBox ID="txtiniciosalida" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
+                      hasta:    <asp:TextBox ID="txfinalsalida" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                        <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div> 
+                     <div class="modal-wrapper" id="enviado_salida">
+                    <div class="popup-contenedor">
+                        <h2>buscar por funcionario De Radicado </h2>
+                        <p>en este punto podra buscar por el funcionario que firma Radicado</p>
+                      <asp:TextBox ID="txtfirma" runat="server" CssClass="form-control"></asp:TextBox>
+                    
+                        <asp:Button ID="btnfirma" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div> 
+            </div>
+                 
             </div>
 
             <%--cuerpo de pagina--%>
