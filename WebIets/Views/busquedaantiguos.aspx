@@ -56,8 +56,36 @@ ul{
    opacity: 0;
    margin-top: -300px;
 }
- 
-#popup:target {
+#Asunto { 
+   visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
+
+#fecha { 
+   visibility: hidden;
+   opacity: 0;                      /*id de la etiqueta*/
+   margin-top: -300px;
+}
+
+ /*evento de label etiqueta*/
+#Asunto:target {
+   visibility:visible;
+   opacity: 1;
+   background-color: rgba(0,0,0,0.8);
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   margin:0;
+   z-index: 999;
+   -webkit-transition:all 1s;
+   -moz-transition:all 1s;
+   transition:all 1s;
+}
+/*evento de label etiqueta*/
+#fecha:target {
    visibility:visible;
    opacity: 1;
    background-color: rgba(0,0,0,0.8);
@@ -112,23 +140,36 @@ a.popup-cerrar {
                 <nav>
                      <ul id="menu">
           <li><a href="">N° Radicado</a></li>
-          <li><a href="">Fecha</a>
+          <li><a href="#fecha" class="popup-link">Fecha</a>
                              <ul>
                              <li><a href="">Año</a></li>
                             </ul>
           </li>
                         
-          <li><a href="#popup" class="popup-link">Asunto</a></li>
+          <li><a href="#Asunto" class="popup-link">Asunto</a></li>
           <li><a href="">Enviado a</a></li>
           <li><a href="">Dirigido  a</a></li>
         </ul>
                     
                 </nav>
-                <%--creando ventana modal--%>
-                <div class="modal-wrapper" id="popup">
+                <%--creando ventana modal Asunto--%>
+                <div class="modal-wrapper" id="Asunto">
                     <div class="popup-contenedor">
                         <h2>buscar por Asuntos </h2>
-                        <p>en este punt podra buscar por palabras relacionadas en el asunto del radicado</p>
+                        <p>en este punto podra buscar por palabras relacionadas en el asunto del radicado</p>
+                        <asp:TextBox ID="txtasunto" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:Button ID="btnbuscar" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <a class="popup-cerrar"  href="#">X</a>
+
+                    </div>
+                    </div>
+                 <div class="modal-wrapper" id="fecha">
+                    <div class="popup-contenedor">
+                        <h2>buscar por Asuntos </h2>
+                        <p>en este punto podra buscar por fechas relacionadas en el asunto del radicado</p>
+                      desde:  <asp:TextBox ID="txtinicial" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
+                      hasta:    <asp:TextBox ID="txtfinal" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                        <asp:Button ID="btnfecha" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
