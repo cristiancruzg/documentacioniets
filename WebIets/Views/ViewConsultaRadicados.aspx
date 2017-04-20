@@ -18,6 +18,11 @@
         .thumbnail {margin-left:-23%;width:250%;}
     </style>
     <form class="form-horizontal" id="form1" runat="server">
+        <asp:GridView ID="GridView1" runat="server" >
+
+
+        </asp:GridView>
+
         <div class="form-group">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
