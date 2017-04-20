@@ -125,7 +125,7 @@ a.popup-cerrar {
                     
                 </nav>
                 <%--creando ventana modal--%>
-                <div class="modal modal-body" id="popup">
+                <div class="modal-wrapper" id="popup">
                     <div class="popup-contenedor">
                         <h2>buscar por Asuntos </h2>
                         <p>en este punt podra buscar por palabras relacionadas en el asunto del radicado</p>
