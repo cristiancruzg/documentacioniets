@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link href="../Content/css/estilo.css" rel="stylesheet" />
     <script src="../Scripts/validacion.js"></script>
+   
 
 </head>
 <body>
@@ -16,13 +17,11 @@
         body {overflow-x: hidden;font-family: "Trebuchet MS", Helvetica, sans-serif;}
         .table {text-align: center;}
         .thumbnail {margin-left:-23%;width:250%;}
+  
     </style>
-    <form class="form-horizontal" id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" >
-
-
-        </asp:GridView>
-
+    
+    <form class="contenedor" id="form1" runat="server">
+       
         <div class="form-group">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -34,8 +33,9 @@
             <div class="container">
                 <div class="col-sm-6 col-md-6">
                     <!--thumbnail Anexo-->
-                    <div class="thumbnail" contenteditable="inherit">
-            <h4 style="margin-left: 25px">Consulta de radicaciones</h4>
+                    <div class="contenido" contenteditable="inherit">
+           
+
             <asp:GridView ID="gvradica" CssClass="table table-bordered" runat="server"
                 AutoGenerateColumns="False" DataKeyNames="ID_RADICACION" Font-Size="X-Small" AllowPaging="True"
                 OnPageIndexChanging="Paginacion" PageSize="20" CellPadding="4" ForeColor="#333333" GridLines="None">
