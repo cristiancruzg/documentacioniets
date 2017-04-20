@@ -118,7 +118,7 @@ a.popup-cerrar {
                             </ul>
           </li>
                         
-          <li><a href="#popup" class="popop-link">Asunto</a></li>
+          <li><a href="#popup" class="popup-link">Asunto</a></li>
           <li><a href="">Enviado a</a></li>
           <li><a href="">Dirigido  a</a></li>
         </ul>
