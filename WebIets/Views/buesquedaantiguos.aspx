@@ -17,7 +17,7 @@
 }
 #menu {
   float: left;
-  width: 15%;
+  width: 20%;
 }
 #contenido {
   float: left;
@@ -26,11 +26,35 @@
 #pie {
   clear: both;
 }
+ul{
+  list-style: none;
+}
+#menu li>a{
+  background-color: grey;
+  color: white;
+  text-decoration: none;
+    display: block;
+  text-decoration: none;
+  min-width: 100px;
+}
+#menu li>a:hover{
+  color: #000;
+  background-color: #eaeaea;
+}#menu>li{
+  float: left;
+  text-align:center
+}
+#menu>li>ul{
+  display: none;
+}
+#menu>li:hover>ul {
+  display:block;
+}
     </style>
 </head>
 <body>
     <form id="form1" class="contenedor" runat="server">
-    <div class="form-group">
+    <div class="cabecera">
         <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <ul class="nav navbar-nav navbar-left" style="padding-left: 160px; padding-top: 5px">
@@ -40,8 +64,27 @@
             </nav>    
     </div> <%--encabezado--%>
         <div class="col-sm-6 col-md-6">
-              <div class="contenido">
              <h4 style="margin-left: 25px">Consulta de radicaciones</h4>
+            <div class="menu"><%-- menu de pagina--%>
+                <h5><strong>buscar por</strong></h5>
+                <nav>
+                     <ul id="menu">
+          <li><a href="">N° Radicado</a></li>
+          <li><a href="">Fecha</a>
+                             <ul>
+                             <li><a href="">Año</a></li>
+                            </ul>
+          </li>
+                        
+          <li><a href="">Asunto</a></li>
+          <li><a href="">Enviado a</a></li>
+          <li><a href="">Dirigido  a</a></li>
+        </ul>
+                </nav>
+            </div>
+
+              <div class="contenido">
+            
 
                          <asp:GridView ID="GridView1" runat="server" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" >
                              <AlternatingRowStyle BackColor="White" />
