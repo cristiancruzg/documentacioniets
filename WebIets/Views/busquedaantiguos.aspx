@@ -8,35 +8,43 @@
  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.css" rel="stylesheet" />
 
-    <title> radicados antiguos</title>
+    <title> radicados antiguos </title>
     <style>
              /*mi estilo*/
        #contenedor {
+            width: 700px;
 }
 #cabecera {
 }
-#menu {
+#menu1 {
   float: left;
-  width: 20%;
+  width: 27%;
   
 }
 #contenido {
-  float: left;
-  width: 85%;
+  float: right;
+  width: 75%;
 }
+        #contenido #principal {
+            float: right;
+            width: 75%;
+        }
 #pie {
   clear: both;
 }
+/*estilo menu*/
 ul{
   list-style: none;
-}
+            width: 268px;
+            height: 163px;
+        }
 #menu li>a{
-  background-color: red;
+  background-color: royalblue;
   color: white;
   text-decoration: none;
     display: block;
   text-decoration: none;
-  min-width: 100px;
+  min-width: 50px;
   border:  inset;
 }
 #menu li>a:hover{
@@ -191,7 +199,7 @@ a.popup-cerrar {
     </style>
 </head>
 <body>
-    <form id="form1" class="contenedor" runat="server">
+    <form id="form1" class="container" runat="server">
         <%--encabezado--%>
     <div class="cabecera">
         <nav class="navbar navbar-default" role="navigation">
@@ -205,8 +213,9 @@ a.popup-cerrar {
       <%-- demarcacion y contenido--%> 
         <div class="col-sm-6 col-md-6">
              <h4 style="margin-left: 25px">Consulta de radicaciones</h4>
+             
         <%-- menu de pagina--%>
-            <div class="menu">
+            <div id="menu1">
                 <h5><strong>buscar por</strong></h5>
                 <nav>
                      <ul id="menu">
@@ -231,9 +240,30 @@ a.popup-cerrar {
                              </ul>
                              </li>
          
+                         <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" >
+                             <AlternatingRowStyle BackColor="White" />
+                             <EditRowStyle BackColor="#2461BF" />
+                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                             <PagerSettings Mode="NumericFirstLast" />
+                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                             <RowStyle BackColor="#EFF3FB" />
+                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                             <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+
+
+                           </asp:GridView>
+         
          </ul>
               
                 </nav>
+             <div id="contenido">
+                 <div id="principal">
+                     </div>
+
                 </div>
                    
            <%--creando ventanas modales para buscar x cada campo--%> 
@@ -243,7 +273,7 @@ a.popup-cerrar {
                         <h2>buscar por Asuntos </h2>
                         <p>en este punto podra buscar por palabras relacionadas en el asunto del radicado</p>
                         <asp:TextBox ID="txtasunto" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="btnbuscar" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="btnbuscar" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btnbuscar_Click"/>
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -293,29 +323,12 @@ a.popup-cerrar {
             </div>
 
             <%--cuerpo de pagina--%>
-                <div class="contenido">
+              
             
-
-                         <asp:GridView ID="GridView1" runat="server" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" >
-                             <AlternatingRowStyle BackColor="White" />
-                             <EditRowStyle BackColor="#2461BF" />
-                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                             <PagerSettings Mode="NumericFirstLast" />
-                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                             <RowStyle BackColor="#EFF3FB" />
-                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                             <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
-
-
-                           </asp:GridView>
-
         </div>
 
         </div>
+           
       
     </form>
     
