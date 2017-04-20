@@ -18,6 +18,7 @@
 #menu {
   float: left;
   width: 20%;
+  
 }
 #contenido {
   float: left;
@@ -30,19 +31,24 @@ ul{
   list-style: none;
 }
 #menu li>a{
-  background-color: grey;
+  background-color: red;
   color: white;
   text-decoration: none;
     display: block;
   text-decoration: none;
   min-width: 100px;
+  border:  inset;
 }
 #menu li>a:hover{
   color: #000;
   background-color: #eaeaea;
+  
 }#menu>li{
   float: left;
-  text-align:center
+  text-align:center;
+  
+      
+
 }
 #menu>li>ul{
   display: none;
@@ -186,6 +192,7 @@ a.popup-cerrar {
 </head>
 <body>
     <form id="form1" class="contenedor" runat="server">
+        <%--encabezado--%>
     <div class="cabecera">
         <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -194,24 +201,43 @@ a.popup-cerrar {
                     </ul>
                 </div>
             </nav>    
-    </div> <%--encabezado--%>
+    </div> 
+      <%-- demarcacion y contenido--%> 
         <div class="col-sm-6 col-md-6">
              <h4 style="margin-left: 25px">Consulta de radicaciones</h4>
-            <div class="menu"><%-- menu de pagina--%>
+        <%-- menu de pagina--%>
+            <div class="menu">
                 <h5><strong>buscar por</strong></h5>
                 <nav>
                      <ul id="menu">
-          <li><a href="#radicado">N° Radicado</a></li>
-          <li><a href="#fecha" class="popup-link">Fecha</a> </li>                          
-                               
-          <li><a href="#Asunto" class="popup-link">Asunto</a></li>
-          <li><a href="#enviado_a">Enviado a</a></li>
-          <li><a href="#dirigido_a">Dirigido  a</a></li>
+                         <li><a href="">RADICADO SALIDA</a>
+                             <ul>
+                                  <li><a href="#radicado">N° Radicado</a></li>
+                                  <li><a href="#fecha" class="popup-link">Fecha</a> </li>                           
+                                  <li><a href="#Asunto" class="popup-link">Asunto</a></li>
+                                  <li><a href="#enviado_a">Enviado a</a></li>
+                                    <li><a href="#dirigido_a">Dirigido  a</a></li>
+
+                             </ul>
+                             </li>
+                          <li><a href="">RADICADO ENTRADA</a>
+                             <ul>
+                                  <li><a href="#radicado">N° Radicado</a></li>
+                             <li><a href="#fecha" class="popup-link">Fecha</a> </li>                           
+                            <li><a href="#Asunto" class="popup-link">Asunto</a></li>
+                            <li><a href="#enviado_a">Enviado a</a></li>
+                           <li><a href="#dirigido_a">Dirigido  a</a></li>
+
+                             </ul>
+                             </li>
+         
          </ul>
               
                 </nav>
-                <%--creando ventanas modales para buscar x cada campo--%>     
-                    <div>
+                </div>
+                   
+           <%--creando ventanas modales para buscar x cada campo--%> 
+                <div > 
                     <div class="modal-wrapper" id="Asunto">
                     <div class="popup-contenedor">
                         <h2>buscar por Asuntos </h2>
@@ -266,7 +292,8 @@ a.popup-cerrar {
                     </div> 
             </div>
 
-              <div class="contenido">
+            <%--cuerpo de pagina--%>
+                <div class="contenido">
             
 
                          <asp:GridView ID="GridView1" runat="server" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" >
@@ -286,7 +313,7 @@ a.popup-cerrar {
 
                            </asp:GridView>
 
-        </div><%--cuerpo de pagina--%>
+        </div>
 
         </div>
       
