@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="buesquedaantiguos.aspx.cs" Inherits="Views_buesquedaantiguos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="busquedaantiguos.aspx.cs" Inherits="Views_buesquedaantiguos" %>
 
 <!DOCTYPE html>
 
