@@ -11,7 +11,12 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        if (!Page.IsPostBack)
+        {
+
+
+        }
+
     }
 
     public DataTable llenar_grilla(string dato)
@@ -54,21 +59,21 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
         catch (Exception ex)
         {
 
-            throw new ArgumentException(ex.Message) ;
+            throw new ArgumentException(ex.Message);
         }
         finally { conexion.cerrarconexion(); }
 
 
     }
-    
+
     public DataTable buscarfechasalida(string inicial, string final)
     {
         try
         {
             SqlCommand cmd = new SqlCommand("consultadocsalidafecha", conexion.conexionbd());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@finicio", SqlDbType.NVarChar).Value = inicial ;
-            cmd.Parameters.Add("@ffinal ", SqlDbType.NVarChar).Value =  final;
+            cmd.Parameters.Add("@finicio", SqlDbType.NVarChar).Value = inicial;
+            cmd.Parameters.Add("@ffinal ", SqlDbType.NVarChar).Value = final;
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter adt = new SqlDataAdapter(cmd);
@@ -78,12 +83,12 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
         catch (Exception ex)
         {
 
-            throw new  ArgumentException(ex.Message);
+            throw new ArgumentException(ex.Message);
         }
 
 
     }
-    
+
     public DataTable buscarfechaentrada(string inicial, string final)
     {
         try
@@ -111,7 +116,7 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
     //enventos de los botones
     protected void btnbuscar_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource= llenar_grilla(this.txtasunto.Text.Trim());
+        gvbusquedas.DataSource = llenar_grilla(this.txtasunto.Text.Trim());
         gvbusquedas.DataBind();
     }
 
@@ -120,7 +125,7 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
         gvbusquedas.DataSource = grillasalida(this.txtenviado.Text.Trim());
         gvbusquedas.DataBind();
     }
-    
+
     protected void btnasuntosalida_Click(object sender, EventArgs e)
     {
         gvbusquedas.DataSource = grillasalida(this.txtasuntosalida.Text.Trim());
@@ -145,13 +150,13 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
         gvbusquedas.DataSource = llenar_grilla(this.txtradicado.Text.Trim());
         gvbusquedas.DataBind();
     }
-    
+
     protected void btnradsalida_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource = grillasalida(this.txtradsalida.Text.Trim()) ;
+        gvbusquedas.DataSource = grillasalida(this.txtradsalida.Text.Trim());
         gvbusquedas.DataBind();
     }
-    
+
     protected void btntipsalida_Click(object sender, EventArgs e)
     {
         gvbusquedas.DataSource = grillasalida(this.txtipsalida.Text.Trim());
@@ -165,14 +170,14 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
         gvbusquedas.DataBind();
 
     }
-        
+
     protected void btnfirma_Click(object sender, EventArgs e)
     {
         gvbusquedas.DataSource = grillasalida(this.txtfirma.Text.Trim());
         gvbusquedas.DataBind();
 
     }
-    
+
     protected void btntipodoc_Click(object sender, EventArgs e)
     {
         gvbusquedas.DataSource = llenar_grilla(this.txtti_doc.Text.Trim());

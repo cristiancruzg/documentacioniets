@@ -275,6 +275,9 @@ if (typeof jQuery === 'undefined') {
     return this
   }
 
+      $('.carousel').carousel({
+          interval: 3000
+      }) 
 
   // BUTTON DATA-API
   // ===============

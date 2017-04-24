@@ -1,25 +1,26 @@
 ﻿/*mi estilo*/
 #contenedor {
-    width: 700px;
+    width: 783px;
+    height: 75px;
 }
 
 #cabecera {
+   
 }
+
+
 
 #menu1 {
     float: left;
     width: 27%;
+    height: 320px;
 }
-
 #contenido {
-    float: right;
-    width: 75%;
+    float: left;
+    width: 92%;
 }
 
-    #contenido #principal {
-        float: right;
-        width: 75%;
-    }
+
 
 #pie {
     clear: both;
@@ -27,8 +28,8 @@
 /*estilo menu*/
 ul {
     list-style: none;
-    width: 268px;
-    height: 163px;
+    width: 427px;
+    height: 187px;
 }
 
 #menu li > a {
@@ -49,6 +50,8 @@ ul {
 #menu > li {
     float: left;
     text-align: center;
+    width: 206px;
+    height: 44px;
 }
 
     #menu > li > ul {
@@ -309,12 +312,12 @@ ul {
 
 .popup-contenedor {
     position: relative;
-    margin: 7% auto;
-    padding: 30px 50px;
+    margin: 4% auto;
+    padding: 30px 20px;
     background-color: #fafafa;
     color: #333;
     border-radius: 3px;
-    width: 50%;
+    width: 35%;
 }
 
 a.popup-cerrar {
@@ -328,3 +331,5 @@ a.popup-cerrar {
     line-height: 1;
     color: #fff;
 }
+
+

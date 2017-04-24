@@ -26,6 +26,8 @@ nav,
 section,
 summary {
   display: block;
+    height: 150px;
+    width: 1176px;
 }
 audio,
 canvas,
@@ -1114,6 +1116,7 @@ figure {
 }
 img {
   vertical-align: middle;
+    margin-left: 0px;
 }
 .img-responsive,
 .thumbnail > img,
@@ -1416,6 +1419,8 @@ ul,
 ol {
   margin-top: 0;
   margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 9px;
 }
 ul ul,
 ol ul,
@@ -1586,6 +1591,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+    height: 990px;
 }
 @media (min-width: 768px) {
   .container {
@@ -1607,6 +1613,8 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+    top: 2px;
+    left: 0px;
 }
 .row {
   margin-right: -15px;
@@ -1617,9 +1625,10 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-    top: -7px;
-    left: 0px;
-    width: 759px;
+    top: 11px;
+    left: -286px;
+    width: 189px;
+    height: 239px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -2264,7 +2273,7 @@ th {
   text-align: left;
 }
 .table {
-  width: 100%;
+  width: 94%;
   max-width: 100%;
   margin-bottom: 20px;
 }
@@ -2445,7 +2454,8 @@ table th[class*="col-"] {
 .table-responsive {
   min-height: .01%;
   overflow-x: auto;
-    margin-left: 126px;
+    margin-left: 7px;
+    margin-top: 0px;
 }
 @media screen and (max-width: 767px) {
   .table-responsive {
@@ -4499,6 +4509,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
+    top: 0px;
+    left: 0px;
+    height: 100px;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4965,6 +4978,7 @@ a.badge:focus {
   margin-bottom: 30px;
   color: inherit;
   background-color: #eee;
+    height: 904px;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -6240,11 +6254,15 @@ button.close {
 }
 .carousel {
   position: relative;
+    top: -521px;
+    left: 218px;
 }
 .carousel-inner {
   position: relative;
   width: 100%;
   overflow: hidden;
+    top: -2318px;
+    left: 41px;
 }
 .carousel-inner > .item {
   position: relative;
@@ -6320,8 +6338,8 @@ button.close {
 }
 .carousel-control {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: -112px;
+  bottom: 253px;
   left: 0;
   width: 15%;
   font-size: 20px;
@@ -6341,14 +6359,11 @@ button.close {
   background-repeat: repeat-x;
 }
 .carousel-control.right {
-  right: 0;
-  left: auto;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
-  background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
-  background-repeat: repeat-x;
+  right: 17px;
+  left: 467px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-repeat: repeat-x;
 }
 .carousel-control:hover,
 .carousel-control:focus {
