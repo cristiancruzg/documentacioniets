@@ -12,7 +12,7 @@
 
 </head>
 <body>
-       <form id="form1"  runat="server">
+       <form id="form1"  class="container" runat="server">
         
     
          <header style="border:groove blue">
@@ -28,7 +28,7 @@
 
 
            
-                <div id="menu1" style="border:5px solid #BF00FF">
+                <div id="menu1" style="border:5px solid #BF00FF;margin-top:47px" >
                     <h4>consulta radicaciones</h4>
                
 
@@ -67,10 +67,10 @@
                 
        
                <%--<main id="contenido" style="border:groove red"  margin-left: 409px; top:65px;">--%>
-                  <div id="contenido">
+                  <div id="contenido" style="margin-top:auto;">
                   <%-- <section id="main" style="border:groove black; padding-top:5px; margin-left: 453px;">--%>
                        
-                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" Width="911px" Height="600px" >
+                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" Width="642px" Height="600px" >
                              <AlternatingRowStyle BackColor="White" />
                              <EditRowStyle BackColor="#2461BF" />
                              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
