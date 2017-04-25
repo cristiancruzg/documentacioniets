@@ -35,7 +35,7 @@
 
            <div class="container-fluid" >
            
-                <div id="menu1" style="border:5px solid #BF00FF;margin-top:47px" >
+                <div id="menu1" style="border:5px solid blue;margin-top:47px; margin-left: 0px;" class="panel panel-primary" >
                     <h4>consulta radicaciones</h4>
                
 
@@ -77,7 +77,7 @@
        
                <%--<main id="contenido" style="border:groove red"  margin-left: 409px; top:65px;">--%>
                <div id="contenido" >
-               <div  class="panel  panel-primary" style="overflow:auto">
+               <div  class="panel  panel-primary"  style="overflow:auto; margin-left: 0px;">
                    <div class="panel panel-heading">
                        tabla de consultas
                     </div>
