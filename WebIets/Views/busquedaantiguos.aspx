@@ -77,7 +77,7 @@
        
                <%--<main id="contenido" style="border:groove red"  margin-left: 409px; top:65px;">--%>
                <div id="contenido" >
-               <div  class="panel container-fluid panel-primary">
+               <div  class="panel  panel-primary" style="overflow:auto">
                    <div class="panel panel-heading">
                        tabla de consultas
                     </div>
