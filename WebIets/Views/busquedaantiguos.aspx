@@ -8,7 +8,7 @@
  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Content/css/miequipo21.css" rel="stylesheet" />
-    <title> radicados antiguos </title>
+    <title> radicados antiguos</title>
 
 </head>
 <body>
@@ -70,7 +70,7 @@
                   <div id="contenido" style="margin-top:auto;">
                   <%-- <section id="main" style="border:groove black; padding-top:5px; margin-left: 453px;">--%>
                        
-                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" Width="642px" Height="600px" >
+                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" Width="539px" Height="600px" >
                              <AlternatingRowStyle BackColor="White" />
                              <EditRowStyle BackColor="#2461BF" />
                              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

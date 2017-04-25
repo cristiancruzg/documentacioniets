@@ -26,8 +26,8 @@ nav,
 section,
 summary {
   display: block;
-    height: 95px;
-    width: 1192px;
+    height: 90px;
+    width: 466px;
 }
 audio,
 canvas,
@@ -1592,6 +1592,7 @@ pre code {
   margin-right: auto;
   margin-left: auto;
     height: 990px;
+    width: 1230px;
 }
 @media (min-width: 768px) {
   .container {
@@ -2454,7 +2455,7 @@ table th[class*="col-"] {
 .table-responsive {
   min-height: .01%;
   overflow-x: auto;
-    margin-left: 0px;
+    margin-left: 79px;
     margin-top: 0px;
     margin-right: 40px;
 }
