@@ -27,7 +27,7 @@ section,
 summary {
   display: block;
     height: 111px;
-    width: 938px;
+    width: 605px;
 }
 audio,
 canvas,
@@ -2265,8 +2265,8 @@ pre code {
 }
 table {
   background-color: transparent;
-    height: 1137px;
-    width: 156px;
+    height: 39px;
+    width: 150px;
 }
 caption {
   padding-top: 8px;
@@ -5480,6 +5480,9 @@ button.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
+    width: 536px;
+    height: 375px;
+    margin-top: 0px;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -5725,11 +5728,13 @@ button.list-group-item-danger.active:focus {
 }
 .panel-primary {
   border-color: #337ab7;
+    width: 747px;
 }
 .panel-primary > .panel-heading {
   color: #fff;
   background-color: #337ab7;
   border-color: #337ab7;
+    width: 728px;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #337ab7;

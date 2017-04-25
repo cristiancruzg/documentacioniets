@@ -33,7 +33,7 @@
               
     </header> 
 
-           <div class="container-fluid" style="border: solid red">
+           <div class="container-fluid" >
            
                 <div id="menu1" style="border:5px solid #BF00FF;margin-top:47px" >
                     <h4>consulta radicaciones</h4>
@@ -77,15 +77,16 @@
        
                <%--<main id="contenido" style="border:groove red"  margin-left: 409px; top:65px;">--%>
                <div id="contenido" >
-               <div  class="panel panel-primary">
+               <div  class="panel container-fluid panel-primary">
                    <div class="panel panel-heading">
                        tabla de consultas
-                   </div>
-                    <div class=" panel panel-body">
-                  <table  >
+                    </div>
+
+                     <div class="panel panel-body">
+                  
                   <%-- <section id="main" style="border:groove black; padding-top:5px; margin-left: 453px;">--%>
                        
-                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="panel table-hover" CellPadding="4" ForeColor="#333333" GridLines="Both" AllowPaging="True" Width="16px" Height="16px" >
+                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" GridLines="Both" AllowPaging="True" Width="114px" Height="16px" >
                              <AlternatingRowStyle BackColor="White" />
                              <EditRowStyle BackColor="#2461BF" />
                              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -102,10 +103,10 @@
                            </asp:GridView>
                   <%--  </section>--%>
 
-               </table>
-                        </div>
+              
+                       
                                 
-                               
+                           </div>           
                </div>
                    </div>
         <div id="pie">
