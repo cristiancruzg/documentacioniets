@@ -12,14 +12,16 @@
 
 #menu1 {
     float: left;
-    width: 38%;
-    height: 134px;
+    width: 28%;
+    height: 212px;
 }
 #contenido {
     float: left;
-    width: 66%;
-    margin-left: 458px;
-    margin-top: 0px;
+    width: 23%;
+    margin-left: 8px;
+    margin-top: auto;
+   
+   
 }
 
 
@@ -44,7 +46,7 @@ ul {
     display: block;
     text-decoration: none;
     min-width: 50px;
-    height: 33px;
+    height: 43px;
     width: 206px;
     margin-left: 0px;
 }
@@ -57,8 +59,8 @@ ul {
 #menu > li {
     float: left;
     text-align: center;
-    width: 227px;
-    height: 39px;
+    width: 228px;
+    height: 48px;
 }
 
     #menu > li > ul {

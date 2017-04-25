@@ -10,15 +10,22 @@
     <link href="../Content/css/miequipo21.css" rel="stylesheet" />
     <title> radicados antiguos</title>
 
+    <style type="text/css">
+        .auto-style1 {
+            width: 25px;
+            height: 17px;
+        }
+    </style>
+
 </head>
 <body>
-       <form id="form1"  class="container" runat="server">
+       <form id="form1"  class="container-fluid" runat="server" style="margin-left:initial">
         
     
          <header style="border:groove blue">
          
 
-        <nav style="padding-left:110px; padding-top: 5px; height: 156px;">
+        <nav style="padding-left:110px; padding-top: 5px; height: 135px;">
                     <header>         
                         <asp:Image src="../images/logo.png" runat="server" Width="319px" Height="80px"></asp:Image>
                </header>
@@ -26,18 +33,19 @@
               
     </header> 
 
-
+           <div class="container-fluid" style="border: solid red">
            
                 <div id="menu1" style="border:5px solid #BF00FF;margin-top:47px" >
                     <h4>consulta radicaciones</h4>
                
 
-                    <h5 ><strong >buscar por</strong></h5>
+                    <h5 ><strong >buscar por&nbsp;&nbsp; </strong>
+                        <img class="auto-style1" src="../images/busqueda.png" /></h5>
                    <nav>
                              <ul id="menu">
-                             <li><a href="">RADICADO SALIDA</a>
+                             <li><a href="">&nbsp;<span ><img src="../images/puerta-de-salida-simbolo.png" width="32"/></span>RADICADO SALIDA</a>
                              <ul>
-                                  <li><a href="#radicadosalida"class="popup-link">N° Radicado</a></li>
+                                  <li><a href="#radicadosalida"class="popup-link" > ° Radicado</a></li>
                                   <li><a href="#fechasalida" class="popup-link">Fecha</a> </li>                           
                                   <li><a href="#Asuntosalida" class="popup-link">Asunto</a></li>
                                   <li><a href="#enviado_salida"class="popup-link">Firmado por</a></li>
@@ -45,7 +53,8 @@
                                  
                              </ul>
                              </li>
-                            <li><a href="">RADICADO ENTRADA</a>
+                            <li><a href=""><span > 
+                                <img src="../images/bandeja-de-entrada.png" width="32" /> </span>  RADICADO ENTRADA</a>
                              <ul>
                                   <li><a href="#radicado"class="popup-link">N° Radicado</a></li>
                              <li><a href="#fecha" class="popup-link">Fecha</a> </li>                           
@@ -67,15 +76,20 @@
                 
        
                <%--<main id="contenido" style="border:groove red"  margin-left: 409px; top:65px;">--%>
-                  <div id="contenido" style="margin-top:auto;">
+               <div id="contenido" >
+               <div  class="panel panel-primary">
+                   <div class="panel panel-heading">
+                       tabla de consultas
+                   </div>
+                    <div class=" panel panel-body">
+                  <table  >
                   <%-- <section id="main" style="border:groove black; padding-top:5px; margin-left: 453px;">--%>
                        
-                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="table table-responsive" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" Width="539px" Height="600px" >
+                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="Small" CssClass="panel table-hover" CellPadding="4" ForeColor="#333333" GridLines="Both" AllowPaging="True" Width="16px" Height="16px" >
                              <AlternatingRowStyle BackColor="White" />
                              <EditRowStyle BackColor="#2461BF" />
                              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                             <PagerSettings Mode="NumericFirstLast" />
                              <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                              <RowStyle BackColor="#EFF3FB" />
                              <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -87,10 +101,17 @@
 
                            </asp:GridView>
                   <%--  </section>--%>
+
+               </table>
+                        </div>
+                                
+                               
                </div>
+                   </div>
         <div id="pie">
 
         </div>
+               </div>
 
       <%--  </main>--%>
             

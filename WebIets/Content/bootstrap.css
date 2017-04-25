@@ -26,8 +26,8 @@ nav,
 section,
 summary {
   display: block;
-    height: 90px;
-    width: 466px;
+    height: 111px;
+    width: 938px;
 }
 audio,
 canvas,
@@ -1117,6 +1117,8 @@ figure {
 img {
   vertical-align: middle;
     margin-left: 0px;
+    height: 32px;
+    width: 38px;
 }
 .img-responsive,
 .thumbnail > img,
@@ -1589,10 +1591,10 @@ pre code {
 .container {
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-    height: 990px;
-    width: 1230px;
+  margin-right: 23px;
+  margin-left: 0px;
+    height: 1442px;
+    width: 910px;
 }
 @media (min-width: 768px) {
   .container {
@@ -1613,7 +1615,7 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 0px;
     top: 2px;
     left: 0px;
 }
@@ -2263,6 +2265,8 @@ pre code {
 }
 table {
   background-color: transparent;
+    height: 1137px;
+    width: 156px;
 }
 caption {
   padding-top: 8px;
@@ -2274,7 +2278,6 @@ th {
   text-align: left;
 }
 .table {
-  width: 94%;
   max-width: 100%;
   margin-bottom: 20px;
 }
@@ -2455,7 +2458,7 @@ table th[class*="col-"] {
 .table-responsive {
   min-height: .01%;
   overflow-x: auto;
-    margin-left: 79px;
+    margin-left: 5px;
     margin-top: 0px;
     margin-right: 40px;
 }

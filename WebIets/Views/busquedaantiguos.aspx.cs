@@ -11,11 +11,7 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
-        {
-
-
-        }
+        
 
     }
 
