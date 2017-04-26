@@ -86,8 +86,21 @@
                   
                   <%-- <section id="main" style="border:groove black; padding-top:5px; margin-left: 453px;">--%>
                        
-                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" GridLines="Both" AllowPaging="True" Width="114px" Height="16px" >
+                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" AllowPaging="True" Width="114px" Height="16px" AutoGenerateColumns="False" >
                              <AlternatingRowStyle BackColor="White" />
+                             <Columns>
+                                 <asp:BoundField DataField="AÑO" HeaderText="AÑO" SortExpression="AÑO" />
+                                 <asp:BoundField DataField="RADICADO" HeaderText="RADICADO" SortExpression="RADICADO" />
+                                 <asp:BoundField DataField="ASUNTO" HeaderText="ASUNTO" SortExpression="ASUNTO" />
+                                 <asp:BoundField DataField="FOLIOS" HeaderText="FOLIOS" SortExpression="FOLIOS" />
+                                 <asp:BoundField DataField="NOMBRES" HeaderText="NOMBRES" SortExpression="NOMBRES" />
+                                 <asp:BoundField DataField="APELLIDOS" HeaderText="APELLIDOS" SortExpression="APELLIDOS" />
+                                 <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" />
+                                 <asp:BoundField DataField="NOMBRE_T_DOC" HeaderText="TIPO DOC" SortExpression="NOMBRE_T_DOC" />
+                                 <asp:BoundField DataField="NOMBRE_ANEXO" HeaderText="ANEXO" SortExpression="NOMBRE_ANEXO" />
+                                 <asp:BoundField DataField="ANEXOS" HeaderText="NUMERO ANEXOS" SortExpression="ANEXOS" />
+                                 <asp:BoundField DataField="DIRIGIDO" HeaderText="DIRIGIDO A" SortExpression="DIRIGIDO" />
+                             </Columns>
                              <EditRowStyle BackColor="#2461BF" />
                              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -102,6 +115,36 @@
 
                            </asp:GridView>
                   <%--  </section>--%>
+
+              
+                       
+                                
+                           <asp:GridView ID="gvsalida" runat="server"  Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" AllowPaging="True" Width="114px" Height="16px" AutoGenerateColumns="False" GridLines="None">
+                               <AlternatingRowStyle BackColor="White" />
+                               <Columns>
+                                   <asp:BoundField DataField="RADICADO" HeaderText="RADICADO" SortExpression="RADICADO" />
+                                   <asp:BoundField DataField="FECHA" HeaderText="FECHA" SortExpression="FECHA" />
+                                   <asp:BoundField DataField="ASUNTO" HeaderText="ASUNTO" SortExpression="ASUNTO" />
+                                   <asp:BoundField DataField="FIRMA" HeaderText="FIRMA" SortExpression="FIRMA" />
+                                   <asp:BoundField DataField="NOMBRE_T_DOC" HeaderText="TIPO DOC" SortExpression="NOMBRE_T_DOC" />
+                                   <asp:BoundField DataField="FOLIOS" HeaderText="FOLIOS" SortExpression="FOLIOS" />
+                                   <asp:BoundField DataField="ANEXOS" HeaderText="ANEXOS" SortExpression="ANEXOS" />
+                               </Columns>
+                               <EditRowStyle BackColor="#2461BF" />
+                               <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                               <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                               <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                               <RowStyle BackColor="#EFF3FB" />
+                               <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                               <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                               <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                               <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                               <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                         </asp:GridView>
+
+              
+                       
+                          
 
               
                        
@@ -137,7 +180,7 @@
                         <h2>buscar por Tipo de documento </h2>
                         <p>en este punto podra buscar por palabras relacionadas con el documento </p>
                         <asp:TextBox ID="txtti_doc" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="btntipodoc" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="btntipodoc" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btntipodoc_Click"/>
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -158,7 +201,7 @@
                         <h2>buscar por la persona "A quien  llego el radicado" </h2>
                         <p>en este punto podra buscar por palabras relacionadas  con el funcionario a quien fue dirigido el documento</p>
                         <asp:TextBox ID="txtdirigido" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="btndirigido" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="btndirigido" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btndirigido_Click"/>
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -169,7 +212,7 @@
                         <p>en este punto podra buscar por fechas relacionadas en el asunto del radicado</p>
                       desde:  <asp:TextBox ID="txtinicial" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
                       hasta:    <asp:TextBox ID="txtfinal" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
-                        <asp:Button ID="btnfecha" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="btnfecha" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btnfecha_Click"/>
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -180,7 +223,7 @@
                         <p>en este punto podra buscar por el consecutivo relacionado en el Radicado</p>
                       <asp:TextBox ID="txtradicado" runat="server" CssClass="form-control"></asp:TextBox>
                     
-                        <asp:Button ID="Btnradicado" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <asp:Button ID="Btnradicado" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="Btnradicado_Click" />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -191,7 +234,7 @@
                         <p>en este punto podra buscar por el consecutivo relacionado en el Radicado</p>
                       <asp:TextBox ID="txtradsalida" runat="server" CssClass="form-control"></asp:TextBox>
                     
-                        <asp:Button ID="btnradsalida" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <asp:Button ID="btnradsalida" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btnradsalida_Click" />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -202,7 +245,7 @@
                         <p>en este punto podra buscar por el tipo de documento relacionado en el Radicado</p>
                       <asp:TextBox ID="txtipsalida" runat="server" CssClass="form-control"></asp:TextBox>
                     
-                        <asp:Button ID="btntipsalida" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <asp:Button ID="btntipsalida" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btntipsalida_Click" />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -224,7 +267,7 @@
                         <p>en este punto podra buscar por la fecha del  Radicado</p>
                        desde:  <asp:TextBox ID="txtiniciosalida" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
                       hasta:    <asp:TextBox ID="txfinalsalida" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass=" btn btn-primary" />
+                        <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="Button1_Click" />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>
@@ -235,7 +278,7 @@
                         <p>en este punto podra buscar por el funcionario que firma Radicado</p>
                       <asp:TextBox ID="txtfirma" runat="server" CssClass="form-control"></asp:TextBox>
                     
-                        <asp:Button ID="btnfirma" runat="server" Text="Buscar" CssClass=" btn btn-primary"  />
+                        <asp:Button ID="btnfirma" runat="server" Text="Buscar" CssClass=" btn btn-primary" OnClick="btnfirma_Click" />
                         <a class="popup-cerrar"  href="#">X</a>
 
                     </div>

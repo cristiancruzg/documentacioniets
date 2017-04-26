@@ -25,7 +25,10 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter adt = new SqlDataAdapter(cmd);
+            
             adt.Fill(dt);
+              
+           
             return dt;
         }
         catch (Exception ex)
@@ -114,24 +117,29 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
     {
         gvbusquedas.DataSource = llenar_grilla(this.txtasunto.Text.Trim());
         gvbusquedas.DataBind();
+        gvsalida.Visible = false;
     }
 
     protected void btnenviado_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource = grillasalida(this.txtenviado.Text.Trim());
-        gvbusquedas.DataBind();
+        
+        gvsalida.DataSource = grillasalida(this.txtenviado.Text.Trim());
+        gvsalida.DataBind();
+        gvbusquedas.Visible = false;
     }
 
     protected void btnasuntosalida_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource = grillasalida(this.txtasuntosalida.Text.Trim());
-        gvbusquedas.DataBind();
+        gvsalida.DataSource = grillasalida(this.txtasuntosalida.Text.Trim());
+        gvsalida.DataBind();
+        gvbusquedas.Visible = false;
     }
 
     protected void btndirigido_Click(object sender, EventArgs e)
     {
         gvbusquedas.DataSource = grillasalida(this.txtdirigido.Text.Trim());
         gvbusquedas.DataBind();
+        gvsalida.Visible = false;
 
     }
 
@@ -139,24 +147,28 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
     {
         gvbusquedas.DataSource = buscarfechaentrada(this.txtinicial.Text.Trim(), this.txtfinal.Text.Trim());
         gvbusquedas.DataBind();
+        gvsalida.Visible = false;
     }
 
     protected void Btnradicado_Click(object sender, EventArgs e)
     {
         gvbusquedas.DataSource = llenar_grilla(this.txtradicado.Text.Trim());
         gvbusquedas.DataBind();
+        gvsalida.Visible = false;
     }
 
     protected void btnradsalida_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource = grillasalida(this.txtradsalida.Text.Trim());
-        gvbusquedas.DataBind();
+        gvsalida.DataSource = grillasalida(this.txtradsalida.Text.Trim());
+        gvsalida.DataBind();
+        gvbusquedas.Visible = false;
     }
 
     protected void btntipsalida_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource = grillasalida(this.txtipsalida.Text.Trim());
-        gvbusquedas.DataBind();
+        gvsalida.DataSource = grillasalida(this.txtipsalida.Text.Trim());
+        gvsalida.DataBind();
+        gvbusquedas.Visible = false;
 
     }
     //fehca de salida
@@ -164,13 +176,15 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
     {
         gvbusquedas.DataSource = buscarfechasalida(this.txtiniciosalida.Text.Trim(), this.txfinalsalida.Text.Trim());
         gvbusquedas.DataBind();
+        gvsalida.Visible = false;
 
     }
 
     protected void btnfirma_Click(object sender, EventArgs e)
     {
-        gvbusquedas.DataSource = grillasalida(this.txtfirma.Text.Trim());
-        gvbusquedas.DataBind();
+        gvsalida.DataSource = grillasalida(this.txtfirma.Text.Trim());
+        gvsalida.DataBind();
+        gvbusquedas.Visible = false;
 
     }
 
@@ -178,5 +192,8 @@ public partial class Views_buesquedaantiguos : System.Web.UI.Page
     {
         gvbusquedas.DataSource = llenar_grilla(this.txtti_doc.Text.Trim());
         gvbusquedas.DataBind();
+        gvsalida.Visible = false;
     }
+
+   
 }
