@@ -27,7 +27,7 @@ section,
 summary {
   display: block;
     height: 111px;
-    width: 605px;
+    width: 631px;
 }
 audio,
 canvas,
@@ -5737,7 +5737,7 @@ button.list-group-item-danger.active:focus {
   background-color: #337ab7;
   border-color: #337ab7;
     width: 982px;
-    height: 26px;
+    height: 55px;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #337ab7;

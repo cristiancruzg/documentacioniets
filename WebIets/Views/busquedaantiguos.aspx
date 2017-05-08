@@ -25,7 +25,7 @@
          <header style="border:groove blue">
          
 
-        <nav style="padding-left:110px; padding-top: 5px; height: 135px;">
+        <nav style="padding-left:110px; padding-top: 5px; height: 149px;">
                     <header>         
                         <asp:Image src="../images/logo.png" runat="server" Width="319px" Height="80px"></asp:Image>
                </header>
@@ -86,7 +86,7 @@
                   
                   <%-- <section id="main" style="border:groove black; padding-top:5px; margin-left: 453px;">--%>
                        
-                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" AllowPaging="True" Width="114px" Height="16px" AutoGenerateColumns="False" >
+                    <asp:GridView ID="gvbusquedas" runat="server" Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" AllowPaging="True" Width="114px" Height="16px" AutoGenerateColumns="False" OnPageIndexChanging="gvbusquedas_PageIndexChanging" >
                              <AlternatingRowStyle BackColor="White" />
                              <Columns>
                                  <asp:BoundField DataField="AÑO" HeaderText="AÑO" SortExpression="AÑO" />
@@ -104,6 +104,7 @@
                              <EditRowStyle BackColor="#2461BF" />
                              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                             <PagerSettings Mode="NextPreviousFirstLast" />
                              <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                              <RowStyle BackColor="#EFF3FB" />
                              <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -119,7 +120,7 @@
               
                        
                                 
-                           <asp:GridView ID="gvsalida" runat="server"  Font-Size="X-Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" AllowPaging="True" Width="114px" Height="16px" AutoGenerateColumns="False" GridLines="None">
+                           <asp:GridView ID="gvsalida" runat="server"  Font-Size="Small" CssClass="panel  table card-block"  CellPadding="4" ForeColor="#333333" AllowPaging="True" Width="114px" Height="16px" AutoGenerateColumns="False" GridLines="None" Font-Bold="True" Font-Overline="False" OnPageIndexChanging="gvsalida_PageIndexChanging">
                                <AlternatingRowStyle BackColor="White" />
                                <Columns>
                                    <asp:BoundField DataField="RADICADO" HeaderText="RADICADO" SortExpression="RADICADO" />
@@ -133,6 +134,7 @@
                                <EditRowStyle BackColor="#2461BF" />
                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                               <PagerSettings Mode="NumericFirstLast" />
                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                                <RowStyle BackColor="#EFF3FB" />
                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
